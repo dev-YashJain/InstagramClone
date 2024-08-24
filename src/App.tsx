@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import LeftSide from './components/leftSide'
 import MiddleSide from './components/middleSide'

@@ -1,4 +1,3 @@
-import React from 'react';
 import storyDetails from '../storyDetails.json'; // Adjust the path if necessary
 import '../components/middleSide.css';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';

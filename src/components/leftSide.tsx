@@ -1,5 +1,4 @@
 import './leftSide.css'
-import React from 'react'
 import instagramLogo from '../assets/Instagram_logo.svg.png'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';

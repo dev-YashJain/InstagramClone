@@ -1,0 +1,29 @@
+.logoImg {
+  width: 100px;
+  height: 40px;
+}
+.logoPart {
+  margin-left: 15px;
+}
+.navBar {
+  margin-top: 15px;
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.navItem {
+  font-size: 17px;
+  display: flex;
+  padding: 14px;
+  align-items: center;
+  cursor: pointer;
+}
+.leftSidePart {
+  padding-top: 25px;
+  position: fixed;
+}
+
+.icons {
+  font-size: large;
+  margin-right: 10px;
+}

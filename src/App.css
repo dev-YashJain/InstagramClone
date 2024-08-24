@@ -1,0 +1,27 @@
+.App {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh; /* Ensures the container takes up the full viewport height */
+}
+
+.leftSide,
+.middleSide,
+.rightSide {
+  min-width: 0; /* Prevents overflow issues */
+}
+
+.leftSide {
+  flex: 0.2;
+  /
+}
+
+.middleSide {
+  flex: 0.5;
+ 
+}
+
+.rightSide {
+  flex: 0.3;
+}

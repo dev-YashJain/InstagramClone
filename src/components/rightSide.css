@@ -1,0 +1,50 @@
+.parentContainer {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid;
+  
+}
+.rightSideHome {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid; */
+  padding: 10px; /* Optional: Adds some padding for spacing */
+}
+
+.profileImage {
+  height: 54px;
+  width: 54px;
+  padding: 0;
+  border: 2px solid plum;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.texts {
+  flex-grow: 1; /* Allows the text to take up remaining space */
+  margin-left: 10px; /* Adds spacing between the profile image and the text */
+}
+
+.buttons {
+  color: blue;
+  margin-left: auto; /* Pushes the button to the far right */
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+}
+.separatorText {
+  flex-grow: 1;
+  margin-left: 10px;
+  display: flex;
+}
+.text2 {
+  margin-left: auto;
+}

@@ -13,15 +13,14 @@
 }
 
 .leftSide {
-  flex: 0.2;
-  /
+  flex: 0.25;
 }
 
 .middleSide {
-  flex: 0.5;
- 
+  flex: 0.7;
 }
 
 .rightSide {
-  flex: 0.3;
+  flex: 0.15;
+  margin-left: auto; /* Pushes the right side to the extreme right */
 }

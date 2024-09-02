@@ -1,4 +1,4 @@
-import { colors } from '@mui/material';
+
 import '../components/rightSide.css';
 
 const RightSide = () => {

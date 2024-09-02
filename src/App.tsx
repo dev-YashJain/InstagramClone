@@ -13,7 +13,7 @@ function App() {
         <MiddleSide />
       </div>
       <div className="rightside">
-        <RightSide /> 
+        <RightSide />
       </div>
     </div>
   )

@@ -1,0 +1,22 @@
+.dmcard {
+  background-color: darkgray;
+  height: 9vh;
+  width: 13vw;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  padding: 5px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white; /* Optional: to change text color to white */
+  height: 100vh; /* Full viewport height */
+}
+
+.light-mode {
+  background-color: white;
+  color: black; /* Optional: to change text color to black */
+  height: 100vh; /* Full viewport height */
+}

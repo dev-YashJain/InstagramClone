@@ -1,3 +1,4 @@
+import { colors } from '@mui/material';
 import '../components/rightSide.css';
 
 const RightSide = () => {
@@ -22,7 +23,8 @@ const RightSide = () => {
             </div>
             <div className="separatorText">
                 <div className="text1">Suggested for you</div>
-                <div className="text2">See all</div>
+                <div className="text2" style={{ color: 'black' }}>See all</div>
+
             </div>
             <div className="rightSideHome">
                 <div className="profileImage">

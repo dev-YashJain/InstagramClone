@@ -1,15 +1,15 @@
 .App {
-  padding: 0;
+  padding: 5px;
   margin: 0;
   box-sizing: border-box;
   display: flex;
-  height: 100vh; /* Ensures the container takes up the full viewport height */
 }
 
-.leftSide,
-.middleSide,
-.rightSide {
-  min-width: 0; /* Prevents overflow issues */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .leftSide {
@@ -21,6 +21,11 @@
 }
 
 .rightSide {
-  flex: 0.15;
+  flex: 0.05;
   margin-left: auto; /* Pushes the right side to the extreme right */
+}
+
+.darkMode {
+  background-color: black;
+  color: white;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import LeftSide from '../components/leftSide'
 import MiddleSide from '../components/middleSide'
 import RightSide from '../components/rightSide'

@@ -1,22 +1,20 @@
 import './App.css'
-import LeftSide from './components/leftSide'
-import MiddleSide from './components/middleSide'
-import RightSide from './components/rightSide'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProfilePage from './pages/profilePage'; // Import the ProfilePage component
+import HomePage from './pages/homePage'
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <div className="leftSide">
-        <LeftSide />
-      </div>
-      <div className="middleSide">
-        <MiddleSide />
-      </div>
-      <div className="rightside">
-        <RightSide />
-      </div>
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/profilePage" element={<ProfilePage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
+
+

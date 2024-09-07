@@ -72,3 +72,8 @@ body.dark-mode .dropdown {
 body.dark-mode .dropdownItem:hover {
   background-color: #3a3a3a;
 }
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+}

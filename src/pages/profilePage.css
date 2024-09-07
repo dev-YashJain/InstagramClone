@@ -1,0 +1,118 @@
+.profileSection {
+  padding: 5px;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.left {
+  flex: 0.25;
+}
+
+.userProfile {
+  flex: 0.75;
+  border-left: 1px solid lightgray;
+  padding: 20px;
+  margin-left: 1rem;
+}
+
+.profileStart {
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+  height: 40vh;
+  /* border: 1px solid; */
+}
+.bandImage img {
+  border-radius: 50%;
+  height: 25vh;
+  width: 25vh;
+}
+.profileHeader {
+  display: flex;
+  align-items: center;
+}
+.profileHeaderRight {
+  padding-left: 80px;
+  line-height: 0.7;
+}
+.profileStats span {
+  margin-right: 20px;
+}
+.profileHeader button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.profileHeader button {
+  border: none;
+  border-radius: px;
+}
+
+.highlights {
+  display: flex;
+  margin-left: 4rem;
+  border-bottom: 1px solid lightgray;
+}
+.highlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 2rem;
+  justify-content: center;
+}
+.highlight img {
+  height: 14vh;
+  width: 14vh;
+  border-radius: 50%;
+}
+
+/* Existing CSS for other components */
+.profileSection {
+  display: flex;
+}
+
+.userProfile {
+  flex: 1;
+  padding: 20px;
+}
+
+.postsSection {
+  flex-direction: column;
+}
+
+.navigator {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.navigator div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 3rem;
+  font-size: small;
+}
+
+/* Grid container for the posts */
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 5px; /* Gap between images */
+  padding: 10px 30px; /* Padding around the grid */
+}
+
+/* Styling for each post image */
+.postImg {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Ensures the images are square */
+  object-fit: cover; /* Cover the entire area of the square */
+  border-radius: 4px; /* Optional: Rounded corners */
+}

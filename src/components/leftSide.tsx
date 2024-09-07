@@ -9,28 +9,34 @@ import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CreateIcon from '@mui/icons-material/Add';
 import ProfileIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
-import Switch from '@mui/material/Switch'; // Import the Switch component
-
-// Import both logos
+import Switch from '@mui/material/Switch';
+import { Link } from 'react-router-dom';
 import instagramLogo from '../assets/Instagram_logo.svg.png';
-import whiteLogo from '../assets/whiteLogo.png'; // New logo for dark mode
+import whiteLogo from '../assets/whiteLogo.png';
+import NavItem from './navItem';
 
 const LeftSide: React.FC = () => {
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-    const [darkMode, setDarkMode] = useState<boolean>(false); // State for Dark Mode
-    const dropdownRef = useRef<HTMLDivElement>(null); // Ref for dropdown
+    const [darkMode, setDarkMode] = useState<boolean>(() => {
+        // Initialize darkMode from localStorage
+        const savedMode = localStorage.getItem('darkMode');
+        return savedMode === 'true'; // If savedMode is 'true', return true, otherwise false
+    });
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
-    // Toggle function for Dark Mode
     const handleDarkModeToggle = () => {
-        setDarkMode(!darkMode);
-        document.body.classList.toggle('dark-mode', !darkMode); // Add or remove 'dark-mode' class from body
+        setDarkMode((prevMode) => {
+            const newMode = !prevMode;
+            document.body.classList.toggle('dark-mode', newMode);
+            localStorage.setItem('darkMode', JSON.stringify(newMode)); // Save the mode to localStorage
+            return newMode;
+        });
     };
 
-    // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -44,7 +50,11 @@ const LeftSide: React.FC = () => {
         };
     }, []);
 
-    // Select the logo based on dark mode state
+    // Effect to apply the dark mode class when component mounts
+    useEffect(() => {
+        document.body.classList.toggle('dark-mode', darkMode);
+    }, [darkMode]);
+
     const logo = darkMode ? whiteLogo : instagramLogo;
 
     return (
@@ -53,46 +63,27 @@ const LeftSide: React.FC = () => {
                 <img className='logoImg' src={logo} alt='Instagram' />
             </div>
             <div className="navBar">
-                <div className="navItem">
-                    <HomeIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Home</div>
-                </div>
-                <div className="navItem">
-                    <SearchIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Search</div>
-                </div>
-                <div className="navItem">
-                    <ExploreIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Explore</div>
-                </div>
-                <div className="navItem">
-                    <Reels className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Reels</div>
-                </div>
-                <div className="navItem">
-                    <MessageIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Message</div>
-                </div>
-                <div className="navItem">
-                    <NotificationIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Notification</div>
-                </div>
-                <div className="navItem">
-                    <CreateIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Create</div>
-                </div>
-                <div className="navItem">
-                    <ProfileIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">Profile</div>
-                </div>
-                <div className="navItem" onClick={toggleDropdown}>
-                    <MenuIcon className='icons' sx={{ fontSize: "28px" }} />
-                    <div className="itemText">More</div>
-                </div>
+                <Link to="/" className="navLink">
+                    <NavItem icon={<HomeIcon className='icons' sx={{ fontSize: "28px" }} />} text="Home" />
+                </Link>
+                <NavItem icon={<SearchIcon className='icons' sx={{ fontSize: "28px" }} />} text="Search" />
+                <NavItem icon={<ExploreIcon className='icons' sx={{ fontSize: "28px" }} />} text="Explore" />
+                <NavItem icon={<Reels className='icons' sx={{ fontSize: "28px" }} />} text="Reels" />
+                <NavItem icon={<MessageIcon className='icons' sx={{ fontSize: "28px" }} />} text="Message" />
+                <NavItem icon={<NotificationIcon className='icons' sx={{ fontSize: "28px" }} />} text="Notification" />
+                <NavItem icon={<CreateIcon className='icons' sx={{ fontSize: "28px" }} />} text="Create" />
+                <Link to="/profilePage" className="navLink">
+                    <NavItem icon={<ProfileIcon className='icons' sx={{ fontSize: "28px" }} />} text="Profile" />
+                </Link>
+
+                <NavItem
+                    icon={<MenuIcon className='icons' sx={{ fontSize: "28px" }} />}
+                    text="More"
+                    onClick={toggleDropdown}
+                />
                 {dropdownOpen && (
                     <div className="dropdown" ref={dropdownRef}>
                         <div className="dropdownItem">Settings</div>
-                        {/* Dark Mode Toggle */}
                         <div className="dropdownItem">
                             <span>Dark Mode</span>
                             <Switch checked={darkMode} onChange={handleDarkModeToggle} />

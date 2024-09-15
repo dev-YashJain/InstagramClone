@@ -1,8 +1,7 @@
-import React from 'react';
 import LeftSide from '../components/leftSide';
 import MiddleSide from '../components/middleSide';
 import RightSide from '../components/rightSide';
-import BottomNavBar from '../components/BottomNavBar'; // Import the BottomNavBar component
+import BottomNavBar from '../components/bottomNavBar.tsx'; // Import the BottomNavBar component
 import '../components/rightSide.css';
 
 const HomePage = () => {

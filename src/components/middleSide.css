@@ -177,4 +177,7 @@
     /* Add some padding for spacing */
     padding-bottom: 5px;
   }
+  .instaImg {
+    width: 170px;
+  }
 }

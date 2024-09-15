@@ -1,34 +1,3 @@
-.App {
-  padding: 5px;
-  margin: 0;
-  box-sizing: border-box;
-  display: flex;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.leftSide {
-  flex: 0.25;
-}
-
-.middleSide {
-  flex: 0.7;
-}
-
-.rightSide {
-  flex: 0.05;
-  margin-left: auto; /* Pushes the right side to the extreme right */
-}
-
-.darkMode {
-  background-color: black;
-  color: white;
-}
 .bottomNavBar {
   display: none;
   position: fixed;
@@ -59,5 +28,4 @@ body {
   .bottomNavBar {
     display: flex;
   }
-  
 }

@@ -29,3 +29,26 @@ body {
   background-color: black;
   color: white;
 }
+
+@media (max-width: 780px) {
+  .leftSide {
+    display: none;
+  }
+
+  .rightside {
+    display: none;
+  }
+  .middleSide {
+    flex: 1;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .profileStart {
+    padding-left: 20px;
+  }
+
+  .highlights {
+    margin-left: 0;
+  }
+}

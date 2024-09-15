@@ -3,6 +3,7 @@
   flex-direction: column;
   box-sizing: border-box;
   /* border: 1px solid; */
+  margin-top: 5vh;
   width: 110%;
 }
 .rightSideHome {
@@ -15,8 +16,8 @@
 }
 
 .profileImage {
-  height: 54px;
-  width: 54px;
+  height: 44px;
+  width: 44px;
   padding: 0;
   border: 2px solid plum;
   border-radius: 50%;
@@ -38,7 +39,9 @@
 }
 
 .buttons {
-  color: blue;
+  color: #279cea;
+  font-size: small;
+  font-weight: 600;
   margin-left: auto; /* Pushes the button to the far right */
   cursor: pointer; /* Changes the cursor to a pointer on hover */
 }

@@ -18,7 +18,7 @@ body {
 
 .userProfile {
   flex: 0.75;
-  border-left: 1px solid lightgray;
+  /* border-left: 1px solid lightgray; */
   padding: 20px;
   margin-left: 1rem;
 }
@@ -49,6 +49,9 @@ body {
 .profileHeader button {
   margin-right: 10px;
   margin-left: 10px;
+  border-radius: 6px;
+  padding: 6px;
+  background-color: #4a4a4a;
 }
 .profileHeader button {
   border: none;
@@ -68,8 +71,8 @@ body {
   justify-content: center;
 }
 .highlight img {
-  height: 14vh;
-  width: 14vh;
+  height: 12vh;
+  width: 12vh;
   border-radius: 50%;
 }
 
@@ -115,4 +118,43 @@ body {
   aspect-ratio: 1 / 1; /* Ensures the images are square */
   object-fit: cover; /* Cover the entire area of the square */
   border-radius: 4px; /* Optional: Rounded corners */
+}
+
+@media (max-width: 780px) {
+  .profileSection {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px;
+  }
+  .left {
+    display: none;
+  }
+
+  .userProfile {
+    flex: 1;
+    border-left: none;
+    margin-left: 0;
+    padding: 0px;
+    padding-top: 25px;
+  }
+
+  .profileStart {
+    padding-left: 10px;
+  }
+
+  .highlights {
+    margin-left: 0;
+  }
+  .profileHeader button {
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 6px;
+    background-color: #4a4a4a;
+  }
+  .profileStats {
+    padding-top: 10px;
+  }
+  .postsGrid {
+    padding: 0px;
+  }
 }

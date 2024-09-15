@@ -8,6 +8,7 @@ import Reels from '@mui/icons-material/SlowMotionVideo';
 import Saved from '@mui/icons-material/BookmarkBorder';
 import Tagged from '@mui/icons-material/AccountBox';
 import postData from '../post.json'; // Import the post data
+import BottomNavBar from '../components/bottomNavBar'; // Import the BottomNavBar component
 
 // Define the type for the post data
 interface PostData {
@@ -123,6 +124,7 @@ const ProfilePage: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <BottomNavBar /> {/* Add the BottomNavBar component */}
         </div>
     );
 };

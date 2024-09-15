@@ -39,7 +39,7 @@ const RightSide = () => {
                     </div>
                 </div>
                 <div className="buttons">
-                    Switch
+                    Follow
                 </div>
 
             </div>
@@ -57,7 +57,7 @@ const RightSide = () => {
                     </div>
                 </div>
                 <div className="buttons">
-                    Switch
+                    Follow
                 </div>
 
             </div>
@@ -74,7 +74,7 @@ const RightSide = () => {
                     </div>
                 </div>
                 <div className="buttons">
-                    Switch
+                    Follow
                 </div>
 
             </div>
@@ -91,7 +91,7 @@ const RightSide = () => {
                     </div>
                 </div>
                 <div className="buttons">
-                    Switch
+                    Follow
                 </div>
 
             </div>

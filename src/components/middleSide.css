@@ -122,6 +122,7 @@
 }
 
 .postImages img {
+  object-fit: cover;
   width: 100%; /* Set each image to take full width of the container */
   height: auto; /* Maintain aspect ratio */
   margin-right: 0; /* Remove margin to avoid gaps */
@@ -178,11 +179,15 @@
   display: none;
 }
 @media (max-width: 780px) {
+  .postSection {
+    padding-top: 0;
+  }
   .post {
     width: 100%;
   }
   .middleSidePart {
     border-left: none;
+    margin-top: 0;
   }
   .topLogo {
     display: flex;

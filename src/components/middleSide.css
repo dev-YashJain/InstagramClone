@@ -153,6 +153,7 @@
   padding-right: 10px;
   padding-left: 0px;
   display: flex;
+
   padding-top: 10px;
 }
 .bookmark {
@@ -178,9 +179,26 @@
 .topLogo {
   display: none;
 }
+
 @media (max-width: 780px) {
   .postSection {
     padding-top: 0;
+  }
+  .postHeader {
+    height: 50px;
+  }
+  .postHeader .profileName {
+    font-size: 18px;
+  }
+
+  .profilePhoto {
+    width: 40px;
+    height: 40px;
+  }
+  .postImages img {
+    width: 101%;
+    height: 600px; /* Adjust the height as needed */
+    object-fit: contain; /* Ensure the image covers the area without distortion */
   }
   .post {
     width: 100%;
@@ -199,5 +217,36 @@
   }
   .instaImg {
     width: 170px;
+  }
+  .storyParticular {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    width: 66px;
+    padding: 10px;
+    height: 100px;
+  }
+
+  .imageDiv {
+    height: 72px; /* Adjusted size to account for border */
+    width: 72px;
+    padding: 0; /* Removed padding to prevent cropping */
+    border: 2px solid plum; /* Increased border size for better visibility */
+    border-radius: 50%;
+    overflow: hidden; /* Ensure image fits within the circular border */
+  }
+  .profileName {
+    padding-top: 4px; /* Add padding to separate name from the image */
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .footerIcons .icon {
+    font-size: 35px; /* Adjust the size as needed */
+  }
+
+  .footerIcons .bookmark {
+    font-size: 35px; /* Ensure bookmark icon is also sized appropriately */
   }
 }

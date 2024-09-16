@@ -77,7 +77,7 @@ const MiddleSide: React.FC = () => {
                             </div>
                             <div className="time">. 10w .</div>
                             <div className="info">
-                                <MoreHorizOutlinedIcon style={{ fontSize: '18px' }} />
+                                <MoreHorizOutlinedIcon style={{ fontSize: '30px' }} />
                             </div>
                         </div>
 

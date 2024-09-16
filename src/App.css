@@ -30,6 +30,11 @@ body {
   color: white;
 }
 
+@media (max-width: 1144px) {
+  .rightside {
+    display: none;
+  }
+}
 @media (max-width: 780px) {
   .leftSide {
     display: none;

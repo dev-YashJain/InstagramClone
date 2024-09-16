@@ -112,22 +112,20 @@
 }
 .postImages {
   display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  flex-direction: row; /* Align images in a row */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  scroll-snap-type: x mandatory; /* Enable scroll snapping */
 }
 
 .postImages::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scrollbar */
 }
 
 .postImages img {
-  width: 100%;
-  height: auto;
-  margin-right: 5px;
-  scroll-snap-align: center;
+  width: 100%; /* Set each image to take full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 0; /* Remove margin to avoid gaps */
+  scroll-snap-align: start; /* Align images at the start of the container */
 }
 /* ---------------------- */
 

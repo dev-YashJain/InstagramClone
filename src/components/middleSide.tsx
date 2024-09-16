@@ -81,17 +81,21 @@ const MiddleSide: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Post Image */}
-                        <div className="postImage">
-                            <img src={story.profile_url[0]} alt={story.name} />
+                        {/* Post Images */}
+                        <div className="postImages">
+                            {story.profile_url.map((url, imgIndex) => (
+                                <img key={imgIndex} src={url} alt={`Post image ${imgIndex + 1}`} className="postImage" />
+                            ))}
                         </div>
 
                         {/* Post Footer */}
                         <div className="postFooter">
                             <div className="footerIcons">
-                                <LikeIcon className='icon' />
-                                <CommentIcon className='icon' />
-                                <ShareIcon className='icon' />
+                                <div className="leftIcons">
+                                    <LikeIcon className='icon' />
+                                    <CommentIcon className='icon' />
+                                    <ShareIcon className='icon' />
+                                </div>
                                 <BookmarkIcon className='bookmark' />
                             </div>
                             <br />

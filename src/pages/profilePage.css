@@ -1,5 +1,4 @@
 .profileSection {
-  padding: 5px;
   margin: 0;
   box-sizing: border-box;
   display: flex;
@@ -119,17 +118,26 @@ body {
   object-fit: cover; /* Cover the entire area of the square */
   border-radius: 4px; /* Optional: Rounded corners */
 }
-
+/* 
 @media (max-width: 780px) {
   .profileSection {
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     padding: 0px;
   }
   .left {
     display: none;
   }
-
+  .highlight img {
+    height: 8vh;
+    width: 8vh;
+    border-radius: 50%;
+  }
+  .bandImage img {
+    border-radius: 50%;
+    height: 16vh;
+    width: 16vh;
+  }
   .userProfile {
     flex: 1;
     border-left: none;
@@ -156,5 +164,136 @@ body {
   }
   .postsGrid {
     padding: 0px;
+  }
+  .navigator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+  }
+} */
+
+@media (max-width: 780px) {
+  .profileSection,
+  .userProfile {
+    margin: 0;
+    padding: 0;
+  }
+  .left {
+    display: none;
+  }
+  .topNav {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+  }
+  .div2 {
+    padding-top: 25px;
+    display: flex;
+    align-items:normal;
+    margin-left: 100px;
+  }
+  .div2 p {
+    font-size: 25px;
+    padding-bottom: 15px;
+    padding-right: 8px;
+  }
+  .div3 {
+    margin-left: 100px;
+    display: flex;
+  }
+  .div3 .btn2 {
+    margin-left: 5px;
+  }
+  .div3 button {
+    border-radius: 8px;
+    padding: 6px;
+    width: 120px;
+    background-color: #4a4a4a;
+  }
+  .div4 {
+    display: flex;
+    align-items: center;
+  }
+  .div6 {
+    padding: 10px;
+    margin-left: 10px;
+  }
+  .div5 img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+  }
+
+  .div6 button {
+    margin-bottom: 10px;
+    background-color: #4a4a4a;
+    padding: 6px;
+    width: 245px;
+    border-radius: 8px;
+  }
+  .div7 {
+    margin: 20px;
+  }
+  .div8 {
+    margin-top: 20px;
+  }
+  .highlights {
+    display: flex;
+    align-items: baseline;
+    margin: 0;
+    border-bottom: none;
+    padding: 0;
+  }
+  .highlight {
+    margin: 0;
+    padding: 3px;
+  }
+  .highlight img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid purple;
+  }
+  .highlight p {
+    font-size: 12px;
+  }
+  .div9 {
+    margin-top: 10x;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+    border-bottom: 1px solid #333; /* Optional styling */
+  }
+
+  .post,
+  .foll,
+  .follow {
+    flex: 1;
+    padding: 10px;
+  }
+
+  p {
+    margin: 0;
+    color: #fff;
+  }
+
+  .postText,
+  .follText,
+  .follow {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: gray; /* Lighter text for the labels */
+  }
+  .navigator {
+    margin-left: 25px;
+  }
+  .postsGrid {
+    padding: 0;
   }
 }

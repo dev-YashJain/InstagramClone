@@ -3,11 +3,7 @@ import './reelPage.css'; // Custom styling
 import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
 
-// Import your icons (assuming you have them in the assets folder)
-import likeIcon from '@mui/icons-material/FavoriteBorder';
-import commentIcon from '@mui/icons-material/ChatBubbleOutline';
-import shareIcon from '@mui/icons-material/IosShare';
-import bookmarkIcon from '@mui/icons-material/BookmarkBorder';
+// git 
 
 const videos = [
     { id: 1, src: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4', type: 'video/mp4' },

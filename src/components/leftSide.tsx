@@ -68,7 +68,10 @@ const LeftSide: React.FC = () => {
                 </Link>
                 <NavItem icon={<SearchIcon className='icons' sx={{ fontSize: "28px" }} />} text="Search" />
                 <NavItem icon={<ExploreIcon className='icons' sx={{ fontSize: "28px" }} />} text="Explore" />
-                <NavItem icon={<Reels className='icons' sx={{ fontSize: "28px" }} />} text="Reels" />
+                <Link to="/reelPage" className='navLink'>
+                    <NavItem icon={<Reels className='icons' sx={{ fontSize: "28px" }} />} text="Reels" />
+                </Link>
+
                 <NavItem icon={<MessageIcon className='icons' sx={{ fontSize: "28px" }} />} text="Message" />
                 <NavItem icon={<NotificationIcon className='icons' sx={{ fontSize: "28px" }} />} text="Notification" />
                 <NavItem icon={<CreateIcon className='icons' sx={{ fontSize: "28px" }} />} text="Create" />

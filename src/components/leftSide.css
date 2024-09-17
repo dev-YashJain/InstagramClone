@@ -21,6 +21,9 @@
   cursor: pointer;
   position: relative; /* Needed for the dropdown to be correctly positioned */
 }
+.navItem:hover{
+  background-color: #333;
+}
 .leftSidePart {
   padding-top: 25px;
   position: fixed;

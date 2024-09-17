@@ -249,7 +249,11 @@
   .footerIcons .bookmark {
     font-size: 25px; /* Ensure bookmark icon is also sized appropriately */
   }
-  .storyBlock{
+  .storyBlock {
     width: 100%;
+  }
+  .postHeader .profileName {
+    font-size: 12px;
+    font-weight: 500;
   }
 }

@@ -3,6 +3,12 @@ import './reelPage.css'; // Custom styling
 import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
 
+// Import your icons (assuming you have them in the assets folder)
+import likeIcon from '@mui/icons-material/FavoriteBorder';
+import commentIcon from '@mui/icons-material/ChatBubbleOutline';
+import shareIcon from '@mui/icons-material/IosShare';
+import bookmarkIcon from '@mui/icons-material/BookmarkBorder';
+
 const videos = [
     { id: 1, src: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4', type: 'video/mp4' },
     { id: 2, src: 'https://www.w3schools.com/html/mov_bbb.mp4', type: 'video/mp4' },
@@ -12,24 +18,29 @@ const videos = [
 const ReelPage: React.FC = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-    const handleScroll = () => {
-        videoRefs.current.forEach((video) => {
-            if (video) {
-                const rect = video.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    video.play(); // Play video when fully in view
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const video = entry.target as HTMLVideoElement; // Cast to HTMLVideoElement
+                if (entry.isIntersecting) {
+                    video.muted = false; // Unmute the video when in view
+                    video.play(); // Play video when in view
                 } else {
+                    video.muted = true; // Mute the video when out of view
                     video.pause(); // Pause video when out of view
                 }
+            });
+        }, { threshold: 0.5 }); // Adjust threshold as needed
+
+        // Observe each video element
+        videoRefs.current.forEach(video => {
+            if (video) {
+                observer.observe(video);
             }
         });
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            observer.disconnect(); // Cleanup observer on unmount
         };
     }, []);
 
@@ -49,16 +60,21 @@ const ReelPage: React.FC = () => {
                             width="100%"
                             controls
                             loop
-                            muted
+                            muted // Initially mute all videos
                             className="videoItem"
                         >
                             <source src={video.src} type={video.type} />
                             Your browser does not support the video tag.
                         </video>
+
+                        {/* Action Icons */}
+                        <div className="actionIcons">
+
+                        </div>
                     </div>
                 ))}
             </div>
-            <BottomNavBar/>
+            <BottomNavBar />
         </div>
     );
 };

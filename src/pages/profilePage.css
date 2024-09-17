@@ -2,6 +2,8 @@
   margin: 0;
   box-sizing: border-box;
   display: flex;
+  flex-wrap: wrap;
+
 }
 
 html,
@@ -13,6 +15,7 @@ body {
 
 .left {
   flex: 0.25;
+  border-right:1px solid #333;
 }
 
 .userProfile {
@@ -23,6 +26,7 @@ body {
 }
 
 .profileStart {
+  padding-top:30px;
   display: flex;
   align-items: center;
   padding-left: 100px;
@@ -60,7 +64,7 @@ body {
 .highlights {
   display: flex;
   margin-left: 4rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #333;
 }
 .highlight {
   display: flex;
@@ -82,7 +86,9 @@ body {
 
 .userProfile {
   flex: 1;
+  
   padding: 20px;
+  margin-left: 220px;
 }
 
 .postsSection {
@@ -109,6 +115,7 @@ body {
   grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 5px; /* Gap between images */
   padding: 10px 30px; /* Padding around the grid */
+
 }
 
 /* Styling for each post image */
@@ -118,60 +125,7 @@ body {
   object-fit: cover; /* Cover the entire area of the square */
   border-radius: 4px; /* Optional: Rounded corners */
 }
-/* 
-@media (max-width: 780px) {
-  .profileSection {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0px;
-  }
-  .left {
-    display: none;
-  }
-  .highlight img {
-    height: 8vh;
-    width: 8vh;
-    border-radius: 50%;
-  }
-  .bandImage img {
-    border-radius: 50%;
-    height: 16vh;
-    width: 16vh;
-  }
-  .userProfile {
-    flex: 1;
-    border-left: none;
-    margin-left: 0;
-    padding: 0px;
-    padding-top: 25px;
-  }
 
-  .profileStart {
-    padding-left: 10px;
-  }
-
-  .highlights {
-    margin-left: 0;
-  }
-  .profileHeader button {
-    margin-right: 10px;
-    margin-left: 10px;
-    border-radius: 6px;
-    background-color: #4a4a4a;
-  }
-  .profileStats {
-    padding-top: 10px;
-  }
-  .postsGrid {
-    padding: 0px;
-  }
-  .navigator {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-left: 30px;
-  }
-} */
 
 @media (max-width: 780px) {
   .profileSection,
@@ -196,12 +150,13 @@ body {
     margin-left: 100px;
   }
   .div2 p {
+    margin-left: 20px;
     font-size: 25px;
     padding-bottom: 15px;
     padding-right: 8px;
   }
   .div3 {
-    margin-left: 100px;
+    margin-left: 120px;
     display: flex;
   }
   .div3 .btn2 {
@@ -222,6 +177,7 @@ body {
     margin-left: 10px;
   }
   .div5 img {
+    margin: 10px;
     height: 80px;
     width: 80px;
     border-radius: 50%;
@@ -295,5 +251,6 @@ body {
   }
   .postsGrid {
     padding: 0;
+    margin-bottom: 50px;
   }
 }

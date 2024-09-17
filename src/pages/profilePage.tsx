@@ -198,7 +198,7 @@ const ProfilePage: React.FC = () => {
                                         <AddIcon style={{ fontSize: 60 }} />
                                         <p>New</p>
                                     </div>
-
+                                    <br />
 
                                 </div>
 

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import './ReelPage.css'; // Custom styling
+import './reelPage.css'; // Custom styling
 import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
 

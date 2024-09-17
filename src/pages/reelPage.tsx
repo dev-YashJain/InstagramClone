@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './ReelPage.css'; // Custom styling
-import LeftSide from '../components/LeftSide'; // Import LeftSide component
+import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
 
 const videos = [

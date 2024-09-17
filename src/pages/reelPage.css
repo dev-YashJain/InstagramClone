@@ -1,0 +1,64 @@
+/* Reel Page Layout */
+.reelPage {
+    display: flex;
+    height: 100vh;
+    background-color: #000;
+}
+
+/* Left side navigation */
+.left {
+    width: 20vw; /* Fixed width for the navigation bar */
+    position: fixed; /* Keep the LeftSide fixed */
+    height: 100vh; /* Full height */
+}
+
+/* Videos Section */
+.videos {
+    margin-left: 35vw; /* Leave space for the LeftSide */
+    width: 30vw; /* Video section takes 30% of the viewport width */
+    height: 100vh; /* Full height */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    scroll-snap-type: y mandatory; /* Snap to each video */
+    padding-right: 8px; /* Space for scroll without affecting the view */
+}
+
+/* Hide the scrollbar */
+.videos::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Chrome, Safari, and Opera */
+}
+
+.videos {
+    -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Video Container */
+.videoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Each video takes full viewport height */
+    width: 100%; /* Full width */
+    scroll-snap-align: start; /* Snap each video to the start */
+    margin-bottom: 20px; /* Add gap between videos */
+}
+
+/* Video Styling */
+.videoItem {
+    height: calc(100% - 20px); /* Adjust video height to maintain gap */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Add border-radius for rounded corners */
+}
+
+/* Responsiveness for mobile */
+@media only screen and (max-width: 780px) {
+    .left {
+        display: none; /* Hide LeftSide on smaller screens */
+    }
+    .videos {
+        margin-left: 0; /* Videos take full width when LeftSide is hidden */
+        width: 100vw; /* Full width on mobile */
+    }
+}

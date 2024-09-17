@@ -12,8 +12,10 @@ const BottomNavBar = () => {
                 {/* <span>Home</span> */}
             </Link>
             <div className="navItems">
-                <ReelsIcon />
-                {/* <span>Reels</span> */}
+                <Link to="/reelPage" className='navItems'>
+                    <ReelsIcon />
+                    {/* <span>Reels</span> */}
+                </Link>
             </div>
             <Link to="/profilePage" className="navItems">
                 <ProfileIcon />

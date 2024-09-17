@@ -9,15 +9,15 @@ const BottomNavBar = () => {
         <div className="bottomNavBar">
             <Link to="/" className="navItems">
                 <HomeIcon />
-                <span>Home</span>
+                {/* <span>Home</span> */}
             </Link>
             <div className="navItems">
                 <ReelsIcon />
-                <span>Reels</span>
+                {/* <span>Reels</span> */}
             </div>
             <Link to="/profilePage" className="navItems">
                 <ProfileIcon />
-                <span>Profile</span>
+                {/* <span>Profile</span> */}
             </Link>
         </div>
     );

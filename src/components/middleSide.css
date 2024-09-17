@@ -196,8 +196,8 @@
     height: 40px;
   }
   .postImages img {
-    width: 101%;
-    height: 600px; /* Adjust the height as needed */
+    width: 100%;
+    height: 450px; /* Adjust the height as needed */
     object-fit: cover; /* Ensure the image covers the area without distortion */
   }
   .post {
@@ -243,10 +243,13 @@
     font-weight: 500;
   }
   .footerIcons .icon {
-    font-size: 35px; /* Adjust the size as needed */
+    font-size: 25px; /* Adjust the size as needed */
   }
 
   .footerIcons .bookmark {
-    font-size: 35px; /* Ensure bookmark icon is also sized appropriately */
+    font-size: 25px; /* Ensure bookmark icon is also sized appropriately */
+  }
+  .storyBlock{
+    width: 100%;
   }
 }

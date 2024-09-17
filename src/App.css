@@ -35,6 +35,9 @@ body {
   }
 }
 @media (max-width: 780px) {
+  .App{
+    box-sizing: border-box;
+  }
   .leftSide {
     display: none;
   }
@@ -43,9 +46,8 @@ body {
     display: none;
   }
   .middleSide {
-    flex: 1;
-    margin-left: 0;
-    padding: 10px;
+    width: 100vw;
+    
   }
 
   .profileStart {

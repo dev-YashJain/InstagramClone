@@ -53,9 +53,3 @@ body {
   font-size: 12px;
   margin-top: 4px;
 }
-
-@media (max-width: 780px) {
-  .bottomNavBar {
-    display: flex;
-  }
-}

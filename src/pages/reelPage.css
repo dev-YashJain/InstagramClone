@@ -35,6 +35,7 @@
 
 /* Video Container */
 .videoContainer {
+    position: relative; /* Position relative to allow absolute positioning of icons */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +52,30 @@
     object-fit: cover;
     border-radius: 10px; /* Add border-radius for rounded corners */
 }
+
+/* Icons inside each video */
+.videoIcons {
+    position: absolute; /* Position icons absolutely within the video container */
+    bottom: 20px; /* Position the icons at the bottom of the video */
+    right: 10px; /* Align the icons to the right side */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 40%; /* Control the space occupied by the icons */
+    padding: 10px;
+    z-index: 10; /* Ensure icons appear above the video */
+    color: #fff; /* White color for better visibility */
+}
+
+/* Like and Comment Icons styling */
+.likeDetails, .commentDetails {
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* Responsiveness for mobile */
 @media only screen and (max-width: 780px) {

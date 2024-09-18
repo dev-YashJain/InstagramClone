@@ -2,15 +2,16 @@ import React, { useRef, useEffect } from 'react';
 import './reelPage.css'; // Custom styling
 import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
-
-// git 
-
+import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import ShareIcon from '@mui/icons-material/IosShareOutlined';
+import BookmarkIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
 const videos = [
     { id: 1, src: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4', type: 'video/mp4' },
     { id: 2, src: 'https://www.w3schools.com/html/mov_bbb.mp4', type: 'video/mp4' },
     { id: 3, src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', type: 'video/mp4' },
 ];
-
 const ReelPage: React.FC = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -19,10 +20,8 @@ const ReelPage: React.FC = () => {
             entries.forEach(entry => {
                 const video = entry.target as HTMLVideoElement; // Cast to HTMLVideoElement
                 if (entry.isIntersecting) {
-                    video.muted = false; // Unmute the video when in view
                     video.play(); // Play video when in view
                 } else {
-                    video.muted = true; // Mute the video when out of view
                     video.pause(); // Pause video when out of view
                 }
             });
@@ -40,6 +39,13 @@ const ReelPage: React.FC = () => {
         };
     }, []);
 
+    const handleVideoClick = (index: number) => {
+        const video = videoRefs.current[index];
+        if (video) {
+            video.muted = !video.muted; // Toggle mute/unmute on click
+        }
+    };
+
     return (
         <div className="reelPage">
             {/* LeftSide Component */}
@@ -54,22 +60,39 @@ const ReelPage: React.FC = () => {
                         <video
                             ref={(el) => (videoRefs.current[index] = el)} // Store video element in ref
                             width="100%"
-                            controls
                             loop
                             muted // Initially mute all videos
                             className="videoItem"
+                            onClick={() => handleVideoClick(index)} // Add click event for mute/unmute
                         >
                             <source src={video.src} type={video.type} />
                             Your browser does not support the video tag.
                         </video>
 
-                        {/* Action Icons */}
-                        <div className="actionIcons">
-
+                        {/* Action Icons inside each video */}
+                        <div className="videoIcons">
+                            <div className="likeDetails">
+                                <LikeIcon />
+                                <p>48.1K</p>
+                            </div>
+                            <div className="commentDetails">
+                                <CommentIcon />
+                                <p>84</p>
+                            </div>
+                            <div>
+                                <ShareIcon />
+                            </div>
+                            <div>
+                                <BookmarkIcon />
+                            </div>
+                            <div>
+                                <MoreIcon />
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
+
             <BottomNavBar />
         </div>
     );

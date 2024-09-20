@@ -20,7 +20,6 @@
     overflow-y: scroll; /* Enable vertical scrolling */
     scroll-behavior: smooth; /* Smooth scrolling */
     scroll-snap-type: y mandatory; /* Snap to each video */
-    padding-right: 8px; /* Space for scroll without affecting the view */
 }
 
 /* Hide the scrollbar */
@@ -47,7 +46,7 @@
 
 /* Video Styling */
 .videoItem {
-    height: calc(100% - 20px); /* Adjust video height to maintain gap */
+    height: calc(101% ); /* Adjust video height to maintain gap */
     width: 100%;
     object-fit: cover;
     border-radius: 10px; /* Add border-radius for rounded corners */
@@ -75,6 +74,7 @@
     flex-direction: column;
     align-items: center;
 }
+
 
 
 /* Responsiveness for mobile */

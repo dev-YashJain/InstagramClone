@@ -213,7 +213,7 @@ const ProfilePage: React.FC = () => {
                                     </div>
                                     <div className="follow">
                                         <p>6</p>
-                                        <p className='follow'>Following</p>
+                                        <p className='followText'>Following</p>
                                     </div>
                                 </div>
 

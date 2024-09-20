@@ -217,30 +217,32 @@ body {
     font-size: 12px;
   }
   .div9 {
-    margin-top: 10x;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    align-items: center;
     padding: 0;
+    align-items: center; /* Aligns items vertically */
     text-align: center;
     border-bottom: 1px solid #333; /* Optional styling */
-  }
+}
 
-  .post,
-  .foll,
-  .follow {
-    flex: 1;
-    padding: 10px;
-  }
+.post, .foll, .follow {
+    flex: 1; /* Ensures equal width */
+    padding: 10px 0; /* Consistent padding */
+}
 
-  .postText,
-  .follText,
-  .follow {
+.postText, .follText, .followText {
     font-size: 12px;
     text-transform: uppercase;
     color: gray; /* Lighter text for the labels */
-  }
+    margin: 0; /* Remove extra margins */
+}
+
+.post p, .foll p, .follow p {
+    margin: 0; /* Remove any default margin on the <p> tags */
+    line-height: 1.4; /* Adjusts the line height for better spacing */
+}
+
   .navigator {
     margin-left: 25px;
   }

@@ -55,7 +55,7 @@
 /* Icons inside each video */
 .videoIcons {
     position: absolute; /* Position icons absolutely within the video container */
-    bottom: 40px; /* Position the icons at the bottom of the video */
+    bottom: 60px; /* Position the icons at the bottom of the video */
     right: 10px; /* Align the icons to the right side */
     display: flex;
     flex-direction: column;

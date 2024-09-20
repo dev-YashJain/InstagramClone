@@ -24,6 +24,10 @@ body {
   margin-left: auto; /* Pushes the right side to the extreme right */
 }
 
+.lightMode{
+  background-color: white;
+  color: black;
+}
 .darkMode {
   background-color: black;
   color: white;

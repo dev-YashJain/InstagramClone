@@ -13,19 +13,19 @@ import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const MiddleSide: React.FC = () => {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
-        // Retrieve dark mode preference from localStorage
         const savedMode = localStorage.getItem('darkMode');
         return savedMode === 'true';
     });
 
-    // Effect to listen to changes in localStorage (e.g., from other components)
+    const [currentImageIndexes, setCurrentImageIndexes] = useState<number[]>(() =>
+        storyDetails.storyDetails.map(() => 0)
+    );
+
     useEffect(() => {
         const handleStorageChange = () => {
             const savedMode = localStorage.getItem('darkMode');
             setDarkMode(savedMode === 'true');
         };
-
-        // Add an event listener to listen for changes in localStorage
         window.addEventListener('storage', handleStorageChange);
 
         return () => {
@@ -39,6 +39,12 @@ const MiddleSide: React.FC = () => {
     }, [darkMode]);
 
     const logo = darkMode ? whiteLogo : instagramLogo;
+
+    const handleImageChange = (postIndex: number, newIndex: number) => {
+        setCurrentImageIndexes((prevIndexes) =>
+            prevIndexes.map((index, i) => (i === postIndex ? newIndex : index))
+        );
+    };
 
     return (
         <div className='middleSidePart'>
@@ -63,58 +69,80 @@ const MiddleSide: React.FC = () => {
             </div>
 
             {/* Post Section */}
-            {storyDetails.storyDetails.map((story, index) => (
-                <div className="postSection" key={index}>
-                    <div className="post">
-                        {/* Post Header */}
-                        <div className="postHeader">
-                            <div className="profilePhoto">
-                                <img src={story.profile_url[0]} alt={story.name} />
-                            </div>
-                            <div className="profileName">{story.name}</div>
-                            <div className="blueTick">
-                                <CheckCircleOutlineOutlinedIcon style={{ color: 'blue', fontSize: '16px' }} />
-                            </div>
-                            <div className="time">. 10w .</div>
-                            <div className="info">
-                                <MoreHorizOutlinedIcon style={{ fontSize: '30px' }} />
-                            </div>
-                        </div>
+            {storyDetails.storyDetails.map((story, postIndex) => {
+                const currentImageIndex = currentImageIndexes[postIndex];
 
-                        {/* Post Images */}
-                        <div className="postImages">
-                            {story.profile_url.map((url, imgIndex) => (
-                                <img key={imgIndex} src={url} alt={`Post image ${imgIndex + 1}`} className="postImage" />
-                            ))}
-                        </div>
-
-                        {/* Post Footer */}
-                        <div className="postFooter">
-                            <div className="footerIcons">
-                                <div className="leftIcons">
-                                    <LikeIcon className='icon' />
-                                    <CommentIcon className='icon' />
-                                    <ShareIcon className='icon' />
+                return (
+                    <div className="postSection" key={postIndex}>
+                        <div className="post">
+                            {/* Post Header */}
+                            <div className="postHeader">
+                                <div className="profilePhoto">
+                                    <img src={story.profile_url[0]} alt={story.name} />
                                 </div>
-                                <BookmarkIcon className='bookmark' />
-                            </div>
-                            <br />
-                            <div className="footerLikes">68,321 likes</div>
-                            <div className="footerCaption">
-                                <div className="footerProfileName">Tom Hanks</div>
+                                <div className="profileName">{story.name}</div>
                                 <div className="blueTick">
                                     <CheckCircleOutlineOutlinedIcon style={{ color: 'blue', fontSize: '16px' }} />
                                 </div>
-                                <div className="captionText">Strings is all you need.</div>
+                                <div className="time">. 10w .</div>
+                                <div className="info">
+                                    <MoreHorizOutlinedIcon style={{ fontSize: '30px' }} />
+                                </div>
                             </div>
-                            <br />
-                            <div className="viewComment">View all 681 comments</div>
-                            <div className="addComment">Add a comment...</div>
+
+                            {/* Post Images and Dots */}
+                            <div className="postImages">
+                                {story.profile_url.map((url, imgIndex) => (
+                                    <img
+                                        key={imgIndex}
+                                        src={url}
+                                        alt={`Post image ${imgIndex + 1}`}
+                                        className={`postImage ${imgIndex === currentImageIndex ? 'active' : ''}`}
+                                        onClick={() => handleImageChange(postIndex, imgIndex)}
+                                    />
+                                ))}
+
+                                {/* Dots Indicator - only render if there are multiple images */}
+                                {story.profile_url.length > 1 && (
+                                    <div className="dotsContainer">
+                                        {story.profile_url.map((_, dotIndex) => (
+                                            <span
+                                                key={dotIndex}
+                                                className={`dot ${dotIndex === currentImageIndex ? 'activeDot' : ''}`}
+                                            ></span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Post Footer */}
+                            <div className="postFooter">
+                                <div className="footerIcons">
+                                    <div className="leftIcons">
+                                        <LikeIcon className='icon' />
+                                        <CommentIcon className='icon' />
+                                        <ShareIcon className='icon' />
+                                    </div>
+                                    <BookmarkIcon className='bookmark' />
+                                </div>
+                                <br />
+                                <div className="footerLikes">68,321 likes</div>
+                                <div className="footerCaption">
+                                    <div className="footerProfileName">Tom Hanks</div>
+                                    <div className="blueTick">
+                                        <CheckCircleOutlineOutlinedIcon style={{ color: 'blue', fontSize: '16px' }} />
+                                    </div>
+                                    <div className="captionText">Strings is all you need.</div>
+                                </div>
+                                <br />
+                                <div className="viewComment">View all 681 comments</div>
+                                <div className="addComment">Add a comment...</div>
+                            </div>
+                            <hr className="postSeparator" />
                         </div>
-                        <hr className="postSeparator" />
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };

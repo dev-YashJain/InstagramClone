@@ -63,7 +63,7 @@ body.dark-mode .profileHeader button{
 }
 .profileHeader button {
   border: none;
-  border-radius: px;
+  border-radius: 4px;
 }
 
 .highlights {
@@ -133,6 +133,7 @@ body.dark-mode .profileHeader button{
 
 
 @media (max-width: 780px) {
+  
   .profileSection,
   .userProfile {
     margin: 0;
@@ -171,6 +172,10 @@ body.dark-mode .profileHeader button{
     border-radius: 8px;
     padding: 6px;
     width: 120px;
+    background-color: lightgrey;
+    border: none;
+  }
+  body.dark-mode .div3 button{
     background-color: #4a4a4a;
   }
   .div4 {
@@ -190,10 +195,14 @@ body.dark-mode .profileHeader button{
 
   .div6 button {
     margin-bottom: 10px;
-    background-color: #4a4a4a;
+    background-color: lightgray;
+    border: none;
     padding: 6px;
     width: 245px;
     border-radius: 8px;
+  }
+  body.dark-mode .div6 button{
+    background-color: #4a4a4a;
   }
   .div7 {
     margin: 20px;

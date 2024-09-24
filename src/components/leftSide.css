@@ -22,7 +22,14 @@
   position: relative; /* Needed for the dropdown to be correctly positioned */
 }
 .navItem:hover{
+  background-color: gainsboro;
+  border-radius: 4px;
+  width: 200px;
+}
+body.dark-mode .navItem:hover {
   background-color: #333;
+  border-radius: 4px;
+  width: 200px;
 }
 .leftSidePart {
   padding-top: 25px;

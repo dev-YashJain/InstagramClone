@@ -54,7 +54,12 @@ body {
   margin-left: 10px;
   border-radius: 6px;
   padding: 6px;
+  background-color: lightgrey;
+  color: black;
+}
+body.dark-mode .profileHeader button{
   background-color: #4a4a4a;
+  color: white;
 }
 .profileHeader button {
   border: none;

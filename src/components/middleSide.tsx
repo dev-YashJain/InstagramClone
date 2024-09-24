@@ -10,6 +10,8 @@ import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded';
 import whiteLogo from '../assets/whiteLogo.png';
 import instagramLogo from '../assets/Instagram_logo.svg.png';
 import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const MiddleSide: React.FC = () => {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -40,9 +42,27 @@ const MiddleSide: React.FC = () => {
 
     const logo = darkMode ? whiteLogo : instagramLogo;
 
-    const handleImageChange = (postIndex: number, newIndex: number) => {
+    const handlePrevImage = (postIndex: number) => {
         setCurrentImageIndexes((prevIndexes) =>
-            prevIndexes.map((index, i) => (i === postIndex ? newIndex : index))
+            prevIndexes.map((index, i) =>
+                i === postIndex
+                    ? index === 0
+                        ? storyDetails.storyDetails[postIndex].profile_url.length - 1
+                        : index - 1
+                    : index
+            )
+        );
+    };
+
+    const handleNextImage = (postIndex: number) => {
+        setCurrentImageIndexes((prevIndexes) =>
+            prevIndexes.map((index, i) =>
+                i === postIndex
+                    ? index === storyDetails.storyDetails[postIndex].profile_url.length - 1
+                        ? 0
+                        : index + 1
+                    : index
+            )
         );
     };
 
@@ -86,23 +106,36 @@ const MiddleSide: React.FC = () => {
                                 </div>
                                 <div className="time">. 10w .</div>
                                 <div className="info">
-                                    <MoreHorizOutlinedIcon style={{ fontSize: '30px' }} />
+                                    <MoreHorizOutlinedIcon style={{ fontSize: '20px' }} />
                                 </div>
                             </div>
 
                             {/* Post Images and Dots */}
                             <div className="postImages">
-                                {story.profile_url.map((url, imgIndex) => (
-                                    <img
-                                        key={imgIndex}
-                                        src={url}
-                                        alt={`Post image ${imgIndex + 1}`}
-                                        className={`postImage ${imgIndex === currentImageIndex ? 'active' : ''}`}
-                                        onClick={() => handleImageChange(postIndex, imgIndex)}
+                                {/* Only show left arrow if it's not the first image */}
+                                {story.profile_url.length > 1 && currentImageIndex > 0 && (
+                                    <ArrowBackIosNewIcon
+                                        className="prevArrow"
+                                        onClick={() => handlePrevImage(postIndex)}
                                     />
-                                ))}
+                                )}
 
-                                {/* Dots Indicator - only render if there are multiple images */}
+                                {/* Current Image */}
+                                <img
+                                    src={story.profile_url[currentImageIndex]}
+                                    alt={`Post image ${currentImageIndex + 1}`}
+                                    className="postImage active"
+                                />
+
+                                {/* Only show right arrow if it's not the last image */}
+                                {story.profile_url.length > 1 && currentImageIndex < story.profile_url.length - 1 && (
+                                    <ArrowForwardIosIcon
+                                        className="nextArrow"
+                                        onClick={() => handleNextImage(postIndex)}
+                                    />
+                                )}
+
+                                {/* Dots Indicator */}
                                 {story.profile_url.length > 1 && (
                                     <div className="dotsContainer">
                                         {story.profile_url.map((_, dotIndex) => (

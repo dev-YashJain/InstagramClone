@@ -13,9 +13,9 @@
   width: 540px;
   padding-left: 3px;
   display: flex;
-  gap: 20px; /* Reduce gap to prevent overflow */
+  gap: 20px;
   align-items: center;
-  justify-content: flex-start; /* Align items to the start to ensure all content is visible initially */
+  justify-content: flex-start;
   height: 100px;
   overflow-x: auto;
 }
@@ -23,7 +23,6 @@
 .storyParticular {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   text-align: center;
   width: 66px;
@@ -35,38 +34,36 @@
 }
 
 .imageDiv {
-  height: 54px; /* Adjusted size to account for border */
+  height: 54px;
   width: 54px;
-  padding: 0; /* Removed padding to prevent cropping */
-  border: 2px solid plum; /* Increased border size for better visibility */
+  padding: 0;
+  border: 2px solid plum;
   border-radius: 50%;
-  overflow: hidden; /* Ensure image fits within the circular border */
+  overflow: hidden;
 }
 
 .statusImg {
-  height: 100%; /* Ensure the image fills the div */
+  height: 100%;
   width: 100%;
   border-radius: 50%;
-  object-fit: cover; /* Ensures the image covers the entire div without distortion */
+  object-fit: cover;
 }
 
 .profileName {
-  padding-top: 4px; /* Add padding to separate name from the image */
+  padding-top: 4px;
   font-size: 10px;
   font-weight: 500;
 }
 
-/* --------------------------------------- */
 .postSection {
-  width: 100%; /* Ensure the post section spans the full width of its container */
+  width: 100%;
   display: flex;
-  justify-content: center; /* Center the post horizontally */
-  margin-top: 20px; /* Add some space above the post */
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .post {
-  width: 70%; /* Set the width of the post to 60% */
-  /* border: 1px solid; */
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
@@ -74,21 +71,23 @@
 .postHeader {
   height: 30px;
   display: flex;
-  align-items: center; /* Center the content vertically */
-  justify-content: center; /* Center the content horizontally */
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
 }
+
 .postHeader .profileName {
   font-size: 14px;
   font-weight: 500;
 }
 
 .profilePhoto {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 2px solid plum;
   overflow: hidden;
-  margin-right: 8px; /* Add space between the profile photo and the name */
+  margin-right: 8px;
 }
 
 .profilePhoto img {
@@ -96,10 +95,11 @@
   height: 100%;
   object-fit: cover;
 }
+
 .blueTick {
   display: flex;
   align-items: center;
-  margin-left: 4px; /* Add some space between the name and the icon */
+  margin-left: 4px;
 }
 
 .time {
@@ -108,63 +108,69 @@
 }
 
 .info {
-  margin-left: auto; /* Pushes the info section to the far right */
+  margin-left: auto;
 }
+
 .postImages {
   display: flex;
-  flex-direction: row; /* Align images in a row */
-  overflow-x: auto; /* Allow horizontal scrolling if necessary */
-  scroll-snap-type: x mandatory; /* Enable scroll snapping */
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  position: relative;
+  border-radius: 4px;
 }
 
 .postImages::-webkit-scrollbar {
-  display: none; /* Hide scrollbar */
+  display: none;
 }
 
 .postImages img {
   object-fit: cover;
-  width: 100%; /* Set each image to take full width of the container */
-  height: 520px; /* Maintain aspect ratio */
-  margin-right: 0; /* Remove margin to avoid gaps */
-  scroll-snap-align: start; /* Align images at the start of the container */
+  width: 100%;
+  height: 520px;
+  margin-right: 0;
+  scroll-snap-align: start;
 }
-/* ---------------------- */
 
 .footerCaption {
   display: flex;
 }
+
 .captionText {
   padding-left: 4px;
 }
+
 .footerIcons {
-  display: flex; /* Enables flexbox layout */
-  justify-content: space-between; /* Distributes space between left icons and bookmark */
-  align-items: center; /* Centers icons vertically */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .leftIcons {
-  display: flex; /* Keeps the left icons in a row */
+  display: flex;
 }
 
 .bookmark {
-  margin-left: auto; /* Pushes the bookmark icon to the right */
+  margin-left: auto;
 }
+
 .icon {
   padding-right: 10px;
   padding-left: 0px;
   display: flex;
-
   padding-top: 10px;
 }
+
 .bookmark {
   display: flex;
   float: right;
   padding-top: 10px;
 }
-.viewComment,
-.addComment {
+
+.viewComment, .addComment {
   color: grey;
 }
+
 .postSeparator {
   border: 0;
   border-top: 1px solid #ddd;
@@ -176,6 +182,7 @@
   border-top: 1px solid lightgray;
   margin: 8px 0px;
 }
+
 .topLogo {
   display: none;
 }
@@ -184,9 +191,11 @@
   .postSection {
     padding-top: 0;
   }
+
   .postHeader {
     height: 50px;
   }
+
   .postHeader .profileName {
     font-size: 18px;
   }
@@ -195,33 +204,37 @@
     width: 40px;
     height: 40px;
   }
+
   .postImages img {
     width: 100%;
-    height: 440px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensure the image covers the area without distortion */
+    height: 440px;
+    object-fit: cover;
   }
+
   .post {
     width: 100%;
   }
+
   .middleSidePart {
     border-left: none;
     margin-top: 0;
   }
+
   .topLogo {
     display: flex;
-    justify-content: space-between; /* Distribute items to start and end */
-    align-items: center; /* Vertically center the items */
-    width: 100%; /* Take up full width of the container */
-    /* Add some padding for spacing */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     padding-bottom: 5px;
   }
+
   .instaImg {
     width: 170px;
   }
+
   .storyParticular {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     text-align: center;
     width: 66px;
@@ -230,73 +243,74 @@
   }
 
   .imageDiv {
-    height: 50px; /* Adjusted size to account for border */
+    height: 50px;
     width: 50px;
-    padding: 0; /* Removed padding to prevent cropping */
-    border: 2px solid plum; /* Increased border size for better visibility */
+    padding: 0;
+    border: 2px solid plum;
     border-radius: 50%;
-    overflow: hidden; /* Ensure image fits within the circular border */
+    overflow: hidden;
   }
+
   .profileName {
-    padding-top: 4px; /* Add padding to separate name from the image */
+    padding-top: 4px;
     font-size: 12px;
     font-weight: 500;
   }
+
   .footerIcons .icon {
-    font-size: 25px; /* Adjust the size as needed */
+    font-size: 25px;
   }
 
   .footerIcons .bookmark {
-    font-size: 25px; /* Ensure bookmark icon is also sized appropriately */
+    font-size: 25px;
   }
+
   .storyBlock {
     width: 100%;
   }
+
   .postHeader .profileName {
     font-size: 12px;
     font-weight: 500;
   }
 }
-/* Dots container */
+
 .dotsContainer {
-  position: absolute; /* Position the dots above the images */
-  bottom: 15px; /* Adjust positioning to be at the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust centering */
-  display: flex; /* Align dots in a row */
-  gap: 5px; /* Space between dots */
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
 }
 
-/* Style for each dot */
 .dot {
-  width: 8px;
-  height: 8px;
-  background-color: gray; /* Default color */
+  width: 6px;
+  height: 6px;
+  background-color: lightgray;
   border-radius: 50%;
   transition: background-color 0.3s;
 }
 
-.postImages {
-  position: relative; /* To allow dots to be positioned within the post */
+.dot.activeDot {
+  background-color: black;
 }
-/* Default light mode */
+
 .reelPage.light {
-  background-color: white; /* White background for light mode */
+  background-color: white;
   color: black;
 }
 
 .reelPage.dark {
-  background-color: black; /* Dark background for dark mode */
+  background-color: black;
   color: white;
 }
 
-/* Ensure videoContainer and other elements adapt */
 .videoContainer {
   position: relative;
   margin-bottom: 20px;
 }
 
-/* Style for action icons */
 .videoIcons {
   position: absolute;
   right: 20px;
@@ -304,4 +318,25 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.prevArrow, .nextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: white;
+  padding: 8px;
+  font-size: 18px;
+  z-index: 1;
+}
+
+.prevArrow {
+  left: 10px;
+}
+
+.nextArrow {
+  right: 10px;
 }

@@ -7,6 +7,10 @@
         "https://cdn.britannica.com/43/93843-050-A1F1B668/White-House-Washington-DC.jpg",
         "https://www.whitehouse.gov/wp-content/uploads/2021/01/us-capitol.jpg?w=700&h=530&crop=1",
         "https://static.toiimg.com/imagenext/toiblogs/photo/blogs/wp-content/uploads/2016/11/1-2.jpg"
+      ],
+      "stories": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-coO6G2IuI734BMaQkhQk0NrYguFtEhJ8dw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0RtsVwUj5AX3olUb4jb12Z_fb42dfE-dwZz4gjW4PVZCZu6qZrJ7uJkRxhTs1RtCrjOg&usqp=CAU"
       ]
     },
     {
@@ -14,6 +18,10 @@
       "character": "Brutus 'Brutal' Howell",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/A6zGbkFjM3uajIakgsSeNTmSKqY.jpg"
+      ],
+      "stories": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLah-8FqP3JSNbjvPm1lPqMrkz5Q2JaY2vBQ&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTytGTa5S6aTQyXKAxqbM4KxVLUAAFU0gjN_A&s"
       ]
     },
     {
@@ -21,6 +29,10 @@
       "character": "Jan Edgecomb",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg"
+      ],
+      "stories": [
+        "https://loveincorporated.blob.core.windows.net/contentimages/gallery/32cfa085-5a31-48c2-bec8-46b887ac9428-views_great_wall_china.jpg",
+        "https://assets.entrepreneur.com/content/3x2/2000/20160608123429-Ocean.jpeg"
       ]
     },
     {
@@ -28,105 +40,120 @@
       "character": "John Coffey",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/3RX8OBqt3gbvFwKYZqiom4O3Ta6.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "James Cromwell",
       "character": "Warden Hal Moores",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/vpNQQbM5PtxsYmVm4oh79SGFyUK.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Michael Jeter",
       "character": "Eduard Delacroix",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/pNBf8X56wCOHH7cArsMYJuke4fO.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Graham Greene",
       "character": "Arlen Bitterbuck",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/ubX9pwrzQqnR41gAGyY1GoSZr1G.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Doug Hutchison",
       "character": "Percy Wetmore",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/afAENhxoHikCAKFaILFdSwVdkCw.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Sam Rockwell",
       "character": "'Wild Bill' Wharton",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/1LvWTTwpxFjFhmNWUPWwfViOkrv.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Barry Pepper",
       "character": "Dean Stanton",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/pmdNUqrpsoozh7QYqUgEgZQ69cA.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Jeffrey DeMunn",
       "character": "Harry Terwilliger",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/eSouAAduXaziFpqLw59AG55jtGY.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Patricia Clarkson",
       "character": "Melinda Moores",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/rHHM9G83fpBAcFathbSyV4Tot5j.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Harry Dean Stanton",
       "character": "Toot-Toot",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/197UiLVdxPOv8196sqmUpJzOQB5.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Dabbs Greer",
       "character": "Old Paul Edgecomb",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/ffm1QvndSpydujTPQ6gG2satfxq.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Eve Brent",
       "character": "Elaine Connelly",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/3TctvAVPmpYs5tQSPOkPijc0RdV.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "William Sadler",
       "character": "Klaus Detterick",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/rWeb2kjYCA7V9MC9kRwRpm57YoY.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Mack Miles",
       "character": "Orderly Hector",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/z4WVgPpOvUFkS5VCn8rOeuCMh5O.jpg"
-      ]
+      ],
+      "stories": [] 
     },
     {
       "name": "Paula Malcomson",
       "character": "Marjorie Detterick",
       "profile_url": [
         "https://image.tmdb.org/t/p/w500/9lJy6ze86ZfVcBcyBK9UZq8FJiC.jpg"
-      ]
+      ],
+      "stories": [] 
     }
   ]
 }

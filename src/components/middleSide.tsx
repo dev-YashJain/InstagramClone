@@ -12,6 +12,7 @@ import instagramLogo from '../assets/Instagram_logo.svg.png';
 import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import StoryViewer from './story'; // Import StoryViewer component
 
 const MiddleSide: React.FC = () => {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -22,6 +23,9 @@ const MiddleSide: React.FC = () => {
     const [currentImageIndexes, setCurrentImageIndexes] = useState<number[]>(() =>
         storyDetails.storyDetails.map(() => 0)
     );
+
+    const [isStoryOpen, setIsStoryOpen] = useState(false);
+    const [selectedStoryIndex, setSelectedStoryIndex] = useState<number>(0);
 
     useEffect(() => {
         const handleStorageChange = () => {
@@ -41,6 +45,21 @@ const MiddleSide: React.FC = () => {
     }, [darkMode]);
 
     const logo = darkMode ? whiteLogo : instagramLogo;
+
+    const openStory = (index: number) => {
+        // Check if the selected story has stories before opening
+        if (storyDetails.storyDetails[index].stories && storyDetails.storyDetails[index].stories.length > 0) {
+            setSelectedStoryIndex(index);
+            setIsStoryOpen(true);
+        } else {
+            // Optionally, you can display an alert or a message here
+            console.log("No stories available for this user.");
+        }
+    };
+    
+    const closeStory = () => {
+        setIsStoryOpen(false);
+    };
 
     const handlePrevImage = (postIndex: number) => {
         setCurrentImageIndexes((prevIndexes) =>
@@ -77,7 +96,7 @@ const MiddleSide: React.FC = () => {
             {/* Story Block */}
             <div className="storyBlock">
                 {storyDetails.storyDetails.map((story, index) => (
-                    <div className="storyParticular" key={index}>
+                    <div className="storyParticular" key={index} onClick={() => openStory(index)}>
                         <div className="imageDiv">
                             <img className="statusImg" src={story.profile_url[0] || "https://via.placeholder.com/150"} alt={story.name} />
                         </div>
@@ -87,6 +106,15 @@ const MiddleSide: React.FC = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Story Viewer Modal */}
+            {isStoryOpen && (
+                <StoryViewer
+                    stories={storyDetails.storyDetails}
+                    initialIndex={selectedStoryIndex}
+                    onClose={closeStory} 
+                />
+            )}
 
             {/* Post Section */}
             {storyDetails.storyDetails.map((story, postIndex) => {

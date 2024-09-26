@@ -1,0 +1,101 @@
+/* Modal Container */
+.storyModal {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Story Image */
+.storyImage {
+    background-color: black;
+    width: 450px;
+    object-fit: cover;
+    height: 100vh;
+}
+
+/* Progress Bar */
+.progressBar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 4px;
+    background-color: gray;
+    transition: width 0.5s linear;
+    z-index: 1001; /* Keep it on top of the story */
+}
+
+/* Story Header with Profile Image and Name */
+.storyHeader {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 1002; /* Ensure it stays above other elements */
+}
+
+.storyHeader img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Circular profile image */
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.storyHeaderName {
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Story Navigation (Previous/Next) */
+.storyNavigation {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prev, .next {
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Close Button */
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Mobile View Adjustments */
+@media(max-width: 780px) {
+    .storyImage {
+        background-color: black;
+        width: 100vw;
+        object-fit: cover;
+        height: 100vh;
+    }
+
+    .storyHeader img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .storyHeaderName {
+        font-size: 14px;
+    }
+}

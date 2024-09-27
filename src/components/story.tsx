@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../components/story.css';
+import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 interface Story {
     profile_url: string[];
@@ -111,6 +112,23 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
 
     return (
         <div className="storyModal" onClick={handleScreenClick}>
+            {/* Progress Bars */}
+            <div className="progressBars">
+                {currentStory.stories.map((_, index) => (
+                    <div key={index} className="progressContainer">
+                        <div
+                            className={`progressSegment ${index <= currentImageIndex ? 'completed' : ''}`}
+                            style={{
+                                width: index === currentImageIndex
+                                    ? `${imageProgress[currentImageIndex]}%`
+                                    : '0%',
+                                transition: 'width 0.1s linear',
+                            }}
+                        ></div>
+                    </div>
+                ))}
+            </div>
+
             {/* Profile Section */}
             <div className="storyHeader">
                 <img
@@ -122,22 +140,6 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
                 <span className="storyHeaderName">{currentStory.name}</span>
             </div>
 
-            {/* Progress Bars */}
-            <div className="progressBars">
-                {currentStory.stories.map((_, index) => (
-                    <div
-                        key={index}
-                        className={`progressSegment ${index < currentImageIndex ? 'completed' : ''}`}
-                        style={{
-                            width: index === currentImageIndex
-                                ? `${imageProgress[currentImageIndex]}%`
-                                : '100%',
-                            transition: 'width 0.1s linear',
-                        }}
-                    ></div>
-                ))}
-            </div>
-
             {/* Story Image */}
             <img
                 src={currentStory.stories[currentImageIndex]}
@@ -147,7 +149,12 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
 
             {/* Close Button */}
             <div className="closeButton" onClick={handleClose}>X</div>
-
+            <div className="storyBottom">
+                <div className="bottomDiv">
+                    Reply to..
+                </div>
+                <LikeIcon className='storyLikeIcon' />
+            </div>
         </div>
     );
 };

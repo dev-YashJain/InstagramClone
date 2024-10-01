@@ -1,0 +1,213 @@
+/* card.css */
+
+/* Post Section */
+.postSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.post {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.postHeader {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.postHeader .profileName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.profilePhoto {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid plum;
+  overflow: hidden;
+  margin-right: 8px;
+}
+
+.profilePhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blueTick {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.time {
+  margin-left: 8px;
+  color: gray;
+}
+
+.info {
+  margin-left: auto;
+}
+
+.postImages {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden; /* Changed from auto to hidden to prevent unintended scrollbars */
+  scroll-snap-type: x mandatory;
+  position: relative;
+  border-radius: 4px;
+}
+
+.postImages::-webkit-scrollbar {
+  display: none;
+}
+
+.postImages img {
+  object-fit: cover;
+  width: 100%;
+  height: 520px;
+  margin-right: 0;
+  scroll-snap-align: start;
+}
+
+.footerCaption {
+  display: flex;
+}
+
+.captionText {
+  padding-left: 4px;
+}
+
+.footerIcons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftIcons {
+  display: flex;
+}
+
+.bookmark {
+  margin-left: auto;
+}
+
+.icon {
+  padding-right: 10px;
+  padding-left: 0px;
+  display: flex;
+  padding-top: 10px;
+}
+
+.bookmark {
+  display: flex;
+  float: right;
+  padding-top: 10px;
+}
+
+.viewComment,
+.addComment {
+  color: grey;
+}
+
+.postSeparator {
+  border: none;
+  border-top: 1px solid lightgray;
+  margin: 8px 0px;
+}
+
+/* Dots Indicator */
+.dotsContainer {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: lightgray;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.dot.activeDot {
+  background-color: black;
+}
+
+/* Arrow Buttons */
+.prevArrow,
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: white;
+  padding: 8px;
+  font-size: 18px;
+  z-index: 1;
+}
+
+.prevArrow {
+  left: 10px;
+}
+
+.nextArrow {
+  right: 10px;
+}
+
+/* Responsive Styles for Card */
+@media (max-width: 780px) {
+  .postSection {
+    padding-top: 0;
+  }
+
+  .postHeader {
+    height: 50px;
+  }
+
+  .postHeader .profileName {
+    font-size: 18px;
+  }
+
+  .profilePhoto {
+    width: 40px;
+    height: 40px;
+  }
+
+  .postImages img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+  }
+
+  .post {
+    width: 100%;
+  }
+
+  .footerIcons .icon {
+    font-size: 25px;
+  }
+
+  .footerIcons .bookmark {
+    font-size: 25px;
+  }
+
+  .postHeader .profileName {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

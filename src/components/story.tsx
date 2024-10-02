@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../components/story.css';
 import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import LikedIcon from '@mui/icons-material/Favorite'; // Import filled heart icon for liked state
 
 interface Story {
     profile_url: string[];
@@ -19,6 +20,7 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
     const [currentStoryIndex, setCurrentStoryIndex] = useState(initialIndex);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [imageProgress, setImageProgress] = useState<number[]>(new Array(stories[initialIndex]?.stories.length).fill(0));
+    const [liked, setLiked] = useState<boolean[]>(new Array(stories.length).fill(false)); // Like state for each story
     const navigate = useNavigate();
 
     const currentStory = stories[currentStoryIndex];
@@ -106,6 +108,15 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
         e.stopPropagation(); // Prevent further action
     };
 
+    // Toggle like functionality for the current story
+    const handleLikeToggle = () => {
+        setLiked((prevLikes) => {
+            const updatedLikes = [...prevLikes];
+            updatedLikes[currentStoryIndex] = !updatedLikes[currentStoryIndex]; // Toggle like state for current story
+            return updatedLikes;
+        });
+    };
+
     if (!currentStory || imageCount === 0) {
         return null;
     }
@@ -149,11 +160,19 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
 
             {/* Close Button */}
             <div className="closeButton" onClick={handleClose}>X</div>
+
+            {/* Like and Reply Section */}
             <div className="storyBottom">
-                <div className="bottomDiv">
-                    Reply to..
+                <div className="bottomDiv">Reply to..</div>
+
+                {/* Like Button with toggle functionality */}
+                <div className="likeButton" onClick={handleLikeToggle}>
+                    {liked[currentStoryIndex] ? (
+                        <LikedIcon className="storyLikedIcon liked" /> // Filled heart icon if liked
+                    ) : (
+                        <LikeIcon className="storyLikeIcon" /> // Outline heart icon if not liked
+                    )}
                 </div>
-                <LikeIcon className='storyLikeIcon' />
             </div>
         </div>
     );

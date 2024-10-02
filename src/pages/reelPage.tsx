@@ -7,6 +7,7 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ShareIcon from '@mui/icons-material/IosShareOutlined';
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
+import LikedIcon from '@mui/icons-material/Favorite'; // Import the filled like icon
 import { DarkModeContext } from '../components/darkModeContext'; // Import Dark Mode Context
 
 const videos = [
@@ -17,9 +18,13 @@ const videos = [
 
 const ReelPage: React.FC = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
+    const [liked, setLiked] = React.useState<boolean>(false);
     // Access darkMode from context
     const { darkMode } = useContext(DarkModeContext);
+
+    const toggleLike = () => {
+        setLiked((prevLiked) => !prevLiked); // Toggle like state
+    };
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -74,7 +79,11 @@ const ReelPage: React.FC = () => {
 
                         <div className="videoIcons">
                             <div className="likeDetails">
-                                <LikeIcon />
+                                {liked ? (
+                                    <LikedIcon className='icon' style={{ color: 'red' }} onClick={toggleLike} />
+                                ) : (
+                                    <LikeIcon className='icon' onClick={toggleLike} />
+                                )}
                                 <p>48.1K</p>
                             </div>
                             <div className="commentDetails">

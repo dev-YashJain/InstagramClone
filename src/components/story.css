@@ -18,16 +18,18 @@
   width: 450px;
   object-fit: cover;
   height: 100vh;
+  z-index: 900; /* Lower z-index to ensure other elements are clickable */
 }
 
 /* Progress Bars */
 .progressBars {
   position: absolute;
-  bottom: 20px;
+  top: 10px;
   left: 20px;
   right: 20px;
   display: flex;
   justify-content: space-between;
+  z-index: 1002; /* Ensure it's above the story image */
 }
 
 .progressContainer {
@@ -42,6 +44,7 @@
   height: 100%;
   background-color: white;
   border-radius: inherit; /* Match parent container's border radius */
+  z-index: 1003; /* Ensure progress segments are visible */
 }
 
 /* Story Header with Profile Image and Name */
@@ -76,10 +79,10 @@
   font-size: 20px;
   cursor: pointer;
   color: #fff;
+  z-index: 1002; /* Ensure it is clickable */
 }
-.progressBars {
-  top: 10px;
-} /* Bottom Div (Reply Section) */
+
+/* Bottom Div (Reply Section) */
 .storyBottom {
   position: absolute;
   bottom: 20px; /* Adjusts the distance from the bottom of the story */
@@ -87,7 +90,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1001;
+  z-index: 1002; /* Keep it above the story image */
 }
 
 .bottomContainer {
@@ -111,7 +114,10 @@
   color: #ffffff;
   font-size: 30px;
 }
-
+.storyLikedIcon
+{
+  color: red;
+}
 /* Mobile View Adjustments */
 @media (max-width: 780px) {
   .storyImage {
@@ -135,8 +141,9 @@
 
   .progressBars {
     top: 10px;
-    z-index: 10000;
-  } /* Adjust bottom spacing for mobile */
+    z-index: 10000; /* Ensure it stays above */
+  }
+
   .bottomDiv {
     width: 70vw;
     font-size: 14px;
@@ -146,9 +153,11 @@
   .storyLikeIcon {
     font-size: 24px;
   }
+
   .storyBottom {
-    bottom: 60px;
+    bottom: 60px; /* Adjust for mobile view */
   }
+
   .closeButton {
     font-size: 16px;
   }

@@ -189,7 +189,7 @@
 
 @media (max-width: 780px) {
   .postSection {
-    padding-top: 0;
+    width: 96vw;
   }
 
   .postHeader {
@@ -228,7 +228,7 @@
     padding-bottom: 5px;
   }
 
-  .instaImg {
+  .instaImg { 
     width: 170px;
   }
 

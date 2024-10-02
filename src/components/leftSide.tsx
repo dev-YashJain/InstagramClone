@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+// src/components/LeftSide.tsx
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import './leftSide.css';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
@@ -14,27 +15,15 @@ import { Link } from 'react-router-dom';
 import instagramLogo from '../assets/Instagram_logo.svg.png';
 import whiteLogo from '../assets/whiteLogo.png';
 import NavItem from './navItem';
+import { DarkModeContext } from '../components/darkModeContext'; // Import the context
 
 const LeftSide: React.FC = () => {
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext); // Consume the context
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-    const [darkMode, setDarkMode] = useState<boolean>(() => {
-        // Initialize darkMode from localStorage
-        const savedMode = localStorage.getItem('darkMode');
-        return savedMode === 'true'; // If savedMode is 'true', return true, otherwise false
-    });
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
-    };
-
-    const handleDarkModeToggle = () => {
-        setDarkMode((prevMode) => {
-            const newMode = !prevMode;
-            document.body.classList.toggle('dark-mode', newMode);
-            localStorage.setItem('darkMode', JSON.stringify(newMode)); // Save the mode to localStorage
-            return newMode;
-        });
     };
 
     useEffect(() => {
@@ -49,11 +38,6 @@ const LeftSide: React.FC = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
-
-    // Effect to apply the dark mode class when component mounts
-    useEffect(() => {
-        document.body.classList.toggle('dark-mode', darkMode);
-    }, [darkMode]);
 
     const logo = darkMode ? whiteLogo : instagramLogo;
 
@@ -71,15 +55,12 @@ const LeftSide: React.FC = () => {
                 <Link to="/reelPage" className='navLink'>
                     <NavItem icon={<Reels className='icons' sx={{ fontSize: "28px" }} />} text="Reels" />
                 </Link>
-
-
                 <NavItem icon={<MessageIcon className='icons' sx={{ fontSize: "28px" }} />} text="Message" />
                 <NavItem icon={<NotificationIcon className='icons' sx={{ fontSize: "28px" }} />} text="Notification" />
                 <NavItem icon={<CreateIcon className='icons' sx={{ fontSize: "28px" }} />} text="Create" />
                 <Link to="/profilePage" className="navLink">
                     <NavItem icon={<ProfileIcon className='icons' sx={{ fontSize: "28px" }} />} text="Profile" />
                 </Link>
-
                 <NavItem
                     icon={<MenuIcon className='icons' sx={{ fontSize: "28px" }} />}
                     text="More"
@@ -90,7 +71,7 @@ const LeftSide: React.FC = () => {
                         <div className="dropdownItem">Settings</div>
                         <div className="dropdownItem">
                             <span>Dark Mode</span>
-                            <Switch checked={darkMode} onChange={handleDarkModeToggle} />
+                            <Switch checked={darkMode} onChange={toggleDarkMode} />
                         </div>
                     </div>
                 )}

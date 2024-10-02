@@ -1,10 +1,15 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+// src/index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { DarkModeProvider } from './components/darkModeContext'; // Adjust the path as necessary
+import './App.css'; // Ensure your global styles are imported here
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+ReactDOM.render(
+  <React.StrictMode>
+    <DarkModeProvider>
+      <App />
+    </DarkModeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

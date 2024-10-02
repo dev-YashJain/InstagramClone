@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+// src/pages/ProfilePage.tsx
+import React, { useEffect, useState, useContext } from 'react';
 import './profilePage.css';
 import LeftSide from '../components/leftSide';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -9,6 +10,8 @@ import Saved from '@mui/icons-material/BookmarkBorder';
 import Tagged from '@mui/icons-material/AccountBox';
 import postData from '../post.json'; // Import the post data
 import BottomNavBar from '../components/bottomNavBar'; // Import the BottomNavBar component
+import Switch from '@mui/material/Switch';
+import { DarkModeContext } from '../components/darkModeContext'; // Import the context
 
 // Define the type for the post data
 interface PostData {
@@ -18,6 +21,9 @@ interface PostData {
 const ProfilePage: React.FC = () => {
     const [posts, setPosts] = useState<PostData[]>([]);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const { darkMode, toggleDarkMode } = useContext(DarkModeContext); // Consume the context
+    const [settingsOpen, setSettingsOpen] = useState<boolean>(false); // State to toggle settings menu
+    const settingsRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // Fetch posts from post.json
@@ -32,6 +38,29 @@ const ProfilePage: React.FC = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
+    // Handle clicks outside the settings menu to close it
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
+                setSettingsOpen(false);
+            }
+        };
+
+        if (settingsOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [settingsOpen]);
+
+    const toggleSettings = () => {
+        setSettingsOpen(!settingsOpen);
+    };
+
     return (
         <div className="profileSection">
             <div className="left">
@@ -42,7 +71,7 @@ const ProfilePage: React.FC = () => {
                 {windowWidth >= 780 ? (
                     <>
                         {/* Profile Header Section */}
-                        <div className="profileSection">
+                        <div className="profileHeaderSection">
                             <div className="profileStart">
                                 <div className="bandImage">
                                     <img
@@ -56,9 +85,18 @@ const ProfilePage: React.FC = () => {
                                     <div className="profileHeader">
                                         <p>thelucidcage</p>
                                         <button>Edit profile</button>
-                                        <button >View archive</button>
-                                        <button >Ad tools</button>
-                                        <SettingsIcon />
+                                        <button>View archive</button>
+                                        <button>Ad tools</button>
+                                        <SettingsIcon onClick={toggleSettings} style={{ cursor: 'pointer' }} />
+                                        {settingsOpen && (
+                                            <div className="settingsDropdown" ref={settingsRef}>
+                                                <div className="dropdownItem">Settings</div>
+                                                <div className="dropdownItem">
+                                                    <span>Dark Mode</span>
+                                                    <Switch checked={darkMode} onChange={toggleDarkMode} />
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                     <div className="profileStats">
                                         <span>25 posts</span>
@@ -140,16 +178,26 @@ const ProfilePage: React.FC = () => {
                     </>
                 ) : (
                     <>
+                        {/* Mobile View Profile Page */}
                         <div className="proPage">
                             <div className="topNav">
-                                <SettingsIcon />
+                                <SettingsIcon onClick={toggleSettings} style={{ cursor: 'pointer' }} />
                                 <p>thelucidcage</p>
                                 <p>@</p>
+                                {settingsOpen && (
+                                    <div className="settingsDropdown" ref={settingsRef}>
+                                        <div className="dropdownItem">Settings</div>
+                                        <div className="dropdownItem">
+                                            <span>Dark Mode</span>
+                                            <Switch checked={darkMode} onChange={toggleDarkMode} />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="div2">
                                 <p>thelucidcage</p>
-                                <SettingsIcon />
+                                <SettingsIcon onClick={toggleSettings} style={{ cursor: 'pointer' }} />
                             </div>
 
                             <div className="div3">
@@ -158,7 +206,6 @@ const ProfilePage: React.FC = () => {
                             </div>
 
                             <div className="div4">
-
                                 <div className="div5">
                                     <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUEFplMonL0QjS9WkOA64aIDjFXJCHf2VwMA&s"} alt="bandImage" />
                                 </div>
@@ -174,7 +221,6 @@ const ProfilePage: React.FC = () => {
                                 </div>
                                 <div className="profileContact">
                                     <p>. <br /> DM for collaboration <br />Email: contact.thelucidcage@gmail.com</p>
-
                                 </div>
                             </div>
 
@@ -199,7 +245,6 @@ const ProfilePage: React.FC = () => {
                                         <p>New</p>
                                     </div>
                                     <br />
-
                                 </div>
 
                                 <div className="div9">
@@ -221,19 +266,15 @@ const ProfilePage: React.FC = () => {
                                     <div className="navigator">
                                         <div>
                                             <Post />
-
                                         </div>
                                         <div>
                                             <Reels />
-
                                         </div>
                                         <div>
                                             <Saved />
-
                                         </div>
                                         <div>
                                             <Tagged />
-
                                         </div>
                                     </div>
                                 </div>

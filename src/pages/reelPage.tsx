@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import './reelPage.css'; // Custom styling
 import LeftSide from '../components/leftSide'; // Import LeftSide component
 import BottomNavBar from '../components/bottomNavBar';
@@ -7,6 +7,7 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ShareIcon from '@mui/icons-material/IosShareOutlined';
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
+import { DarkModeContext } from '../components/darkModeContext'; // Import Dark Mode Context
 
 const videos = [
     { id: 1, src: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4', type: 'video/mp4' },
@@ -16,12 +17,9 @@ const videos = [
 
 const ReelPage: React.FC = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-    
-    // Initialize darkMode from localStorage
-    const [darkMode] = useState<boolean>(() => {
-        const savedMode = localStorage.getItem('darkMode');
-        return savedMode === 'true'; // Retrieve saved mode from localStorage
-    });
+
+    // Access darkMode from context
+    const { darkMode } = useContext(DarkModeContext);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {

@@ -3,6 +3,7 @@ import '../components/middleSide.css'; // Ensure the path is correct based on yo
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import LikedIcon from '@mui/icons-material/Favorite'; // Import the filled like icon
 import CommentIcon from '@mui/icons-material/ModeCommentOutlined';
 import ShareIcon from '@mui/icons-material/IosShareRounded';
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded';
@@ -17,6 +18,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ profile_url, name }) => {
     const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
+    const [liked, setLiked] = React.useState<boolean>(false); // State for like button
 
     const handlePrevImage = () => {
         setCurrentImageIndex((prevIndex) =>
@@ -28,6 +30,10 @@ const Card: React.FC<CardProps> = ({ profile_url, name }) => {
         setCurrentImageIndex((prevIndex) =>
             prevIndex === profile_url.length - 1 ? 0 : prevIndex + 1
         );
+    };
+
+    const toggleLike = () => {
+        setLiked((prevLiked) => !prevLiked); // Toggle like state
     };
 
     return (
@@ -90,7 +96,12 @@ const Card: React.FC<CardProps> = ({ profile_url, name }) => {
                 <div className="postFooter">
                     <div className="footerIcons">
                         <div className="leftIcons">
-                            <LikeIcon className='icon' />
+                            {/* Like Icon */}
+                            {liked ? (
+                                <LikedIcon className='icon' style={{ color: 'red' }} onClick={toggleLike} />
+                            ) : (
+                                <LikeIcon className='icon' onClick={toggleLike} />
+                            )}
                             <CommentIcon className='icon' />
                             <ShareIcon className='icon' />
                         </div>

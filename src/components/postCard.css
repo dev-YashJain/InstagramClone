@@ -172,7 +172,7 @@
 /* Responsive Styles for Card */
 @media (max-width: 780px) {
   .postSection {
-    padding-top: 0;
+    width: 96vw;
   }
 
   .postHeader {

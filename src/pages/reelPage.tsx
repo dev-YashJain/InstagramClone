@@ -1,14 +1,14 @@
-import React, { useRef, useEffect, useContext } from 'react';
-import './reelPage.css'; // Custom styling
-import LeftSide from '../components/leftSide'; // Import LeftSide component
-import BottomNavBar from '../components/bottomNavBar';
+import { FC, useRef, useEffect, useContext, useState } from 'react';
+import styles from './ReelPage.module.css'; // Updated to CSS Module
+import LeftSide from '../components/LeftSide'; // Import LeftSide component
+import BottomNavBar from '../components/BottomNavbar';
 import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import ShareIcon from '@mui/icons-material/IosShareOutlined';
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import MoreIcon from '@mui/icons-material/MoreHorizOutlined';
 import LikedIcon from '@mui/icons-material/Favorite'; // Import the filled like icon
-import { DarkModeContext } from '../components/darkModeContext'; // Import Dark Mode Context
+import { DarkModeContext } from '../context/DarkModeContext'; // Import Dark Mode Context
 
 const videos = [
     { id: 1, src: 'https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4', type: 'video/mp4' },
@@ -16,9 +16,9 @@ const videos = [
     { id: 3, src: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4', type: 'video/mp4' },
 ];
 
-const ReelPage: React.FC = () => {
+const ReelPage: FC = () => {
     const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-    const [liked, setLiked] = React.useState<boolean>(false);
+    const [liked, setLiked] = useState<boolean>(false);
     // Access darkMode from context
     const { darkMode } = useContext(DarkModeContext);
 
@@ -57,36 +57,36 @@ const ReelPage: React.FC = () => {
     };
 
     return (
-        <div className={`reelPage ${darkMode ? 'dark' : 'light'}`}>
-            <div className="left">
+        <div className={`${styles.reelPage} ${darkMode ? styles.dark : styles.light}`}>
+            <div className={styles.left}>
                 <LeftSide />
             </div>
 
-            <div className="videos">
+            <div className={styles.videos}>
                 {videos.map((video, index) => (
-                    <div key={video.id} className="videoContainer">
+                    <div key={video.id} className={styles.videoContainer}>
                         <video
                             ref={(el) => (videoRefs.current[index] = el)}
                             width="100%"
                             loop
                             muted
-                            className="videoItem"
+                            className={styles.videoItem}
                             onClick={() => handleVideoClick(index)}
                         >
                             <source src={video.src} type={video.type} />
                             Your browser does not support the video tag.
                         </video>
 
-                        <div className="videoIcons">
-                            <div className="likeDetails">
+                        <div className={styles.videoIcons}>
+                            <div className={styles.likeDetails}>
                                 {liked ? (
-                                    <LikedIcon className='icon' style={{ color: 'red' }} onClick={toggleLike} />
+                                    <LikedIcon className={styles.icon} style={{ color: 'red' }} onClick={toggleLike} />
                                 ) : (
-                                    <LikeIcon className='icon' onClick={toggleLike} />
+                                    <LikeIcon className={styles.icon} onClick={toggleLike} />
                                 )}
                                 <p>48.1K</p>
                             </div>
-                            <div className="commentDetails">
+                            <div className={styles.commentDetails}>
                                 <CommentIcon />
                                 <p>84</p>
                             </div>

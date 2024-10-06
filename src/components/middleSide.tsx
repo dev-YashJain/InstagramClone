@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import storyDetails from '../storyDetails.json'; // Adjust the path if necessary
-import '../components/middleSide.css';
+import { FC, useState, useEffect, useMemo } from 'react';
+import storyDetailsData from '../storyDetails.json'; // Assuming the structure is known
+import classes from '../components/MiddleSide.module.css';
 import whiteLogo from '../assets/whiteLogo.png';
 import instagramLogo from '../assets/Instagram_logo.svg.png';
 import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import StoryViewer from './story'; // Import StoryViewer component
-import Card from './postCard'; // Import the Card component
+import StoryViewer from './Story';
+import Card from './Postcard';
 
-const MiddleSide: React.FC = () => {
+
+const LOCAL_STORAGE_KEY = 'darkMode'; // Avoid hardcoding the local storage key
+
+const MiddleSide: FC = () => {
     const [darkMode, setDarkMode] = useState<boolean>(() => {
-        const savedMode = localStorage.getItem('darkMode');
+        const savedMode = localStorage.getItem(LOCAL_STORAGE_KEY);
         return savedMode === 'true';
     });
 
-    const [isStoryOpen, setIsStoryOpen] = useState(false);
+    const [isStoryOpen, setIsStoryOpen] = useState<boolean>(false);
     const [selectedStoryIndex, setSelectedStoryIndex] = useState<number>(0);
 
     useEffect(() => {
         const handleStorageChange = () => {
-            const savedMode = localStorage.getItem('darkMode');
+            const savedMode = localStorage.getItem(LOCAL_STORAGE_KEY);
             setDarkMode(savedMode === 'true');
         };
         window.addEventListener('storage', handleStorageChange);
@@ -33,40 +36,47 @@ const MiddleSide: React.FC = () => {
         darkMode ? bodyClass.add('dark-mode') : bodyClass.remove('dark-mode');
     }, [darkMode]);
 
-    const logo = darkMode ? whiteLogo : instagramLogo;
+    // Memoized value for logo selection
+    const logo = useMemo(() => (darkMode ? whiteLogo : instagramLogo), [darkMode]);
 
     const openStory = (index: number) => {
-        // Check if the selected story has stories before opening
-        if (storyDetails.storyDetails[index].stories && storyDetails.storyDetails[index].stories.length > 0) {
+        const story = storyDetailsData.storyDetails[index];
+        if (story?.stories?.length > 0) {
             setSelectedStoryIndex(index);
             setIsStoryOpen(true);
         } else {
-            // Optionally, you can display an alert or a message here
             console.log("No stories available for this user.");
         }
     };
-    
+
     const closeStory = () => {
         setIsStoryOpen(false);
     };
 
     return (
-        <div className='middleSidePart'>
-            {/* Top logo bar */}
-            <div className="topLogo">
-                <div><img className='instaImg' src={logo} alt="Instagram" /></div>
+        <div className={classes.middleSidePart}>
+            <div className={classes.topLogo}>
+                <div><img className={classes.instaImg} src={logo} alt="Instagram" /></div>
                 <div><NotificationIcon /></div>
             </div>
 
             {/* Story Block */}
-            <div className="storyBlock">
-                {storyDetails.storyDetails.map((story, index) => (
-                    <div className="storyParticular" key={index} onClick={() => openStory(index)}>
-                        <div className="imageDiv">
-                            <img className="statusImg" src={story.profile_url[0] || "https://via.placeholder.com/150"} alt={story.name} />
+            <div className={classes.storyBlock}>
+                {storyDetailsData.storyDetails.map((story, index) => (
+                    <div
+                        className={classes.storyParticular}
+                        key={index}
+                        onClick={() => openStory(index)}
+                    >
+                        <div className={classes.imageDiv}>
+                            <img
+                                className={classes.statusImg}
+                                src={story?.profile_url?.[0] || "https://via.placeholder.com/150"}
+                                alt={story?.name}
+                            />
                         </div>
-                        <div className="profileName">
-                            {story.name.length > 9 ? `${story.name.substring(0, 9)}...` : story.name}
+                        <div className={classes.profileName}>
+                            {story?.name.length > 9 ? `${story.name.substring(0, 9)}...` : story.name}
                         </div>
                     </div>
                 ))}
@@ -75,18 +85,18 @@ const MiddleSide: React.FC = () => {
             {/* Story Viewer Modal */}
             {isStoryOpen && (
                 <StoryViewer
-                    stories={storyDetails.storyDetails}
+                    stories={storyDetailsData.storyDetails}
                     initialIndex={selectedStoryIndex}
-                    onClose={closeStory} 
+                    onClose={closeStory}
                 />
             )}
 
             {/* Post Section */}
-            {storyDetails.storyDetails.map((story, postIndex) => (
+            {storyDetailsData.storyDetails.map((story, postIndex) => (
                 <Card
                     key={postIndex}
-                    profile_url={story.profile_url}
-                    name={story.name}
+                    profile_url={story?.profile_url}
+                    name={story?.name}
                 />
             ))}
         </div>

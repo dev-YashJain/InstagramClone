@@ -2,55 +2,57 @@
   margin: 0;
   box-sizing: border-box;
   display: flex;
+  width: 100%; /* Preventing overflow */
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Avoids horizontal scroll issues */
 }
 
 .leftSide {
-  flex: 0.25;
+  flex: 0.20;
 }
 
 .middleSide {
-  flex: 0.7;
+  flex: 0.55;
+  
 }
 
 .rightSide {
-  flex: 0.05;
-  margin-left: auto; /* Pushes the right side to the extreme right */
+  flex: 0.25;
+  margin-left: auto;
 }
 
 .lightMode {
   background-color: white;
   color: black;
 }
+
 .darkMode {
   background-color: black;
   color: white;
 }
 
-
 @media (max-width: 1144px) {
-  .rightside {
+  .rightSide {
     display: none;
   }
 }
+
 @media (max-width: 780px) {
-  .App {
-    box-sizing: border-box;
-  }
   .leftSide {
     display: none;
   }
 
-  .rightside {
+  .rightSide {
     display: none;
   }
+
   .middleSide {
-    width: 100vw;
+    width: 100%; /* Fixes the issue of exceeding 100vw */
   }
 
   .profileStart {

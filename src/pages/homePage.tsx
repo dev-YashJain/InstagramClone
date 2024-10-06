@@ -1,19 +1,19 @@
-import LeftSide from '../components/leftSide';
-import MiddleSide from '../components/middleSide';
-import RightSide from '../components/rightSide';
-import BottomNavBar from '../components/bottomNavBar.tsx'; // Import the BottomNavBar component
-import '../components/rightSide.css';
+import LeftSide from '../components/LeftSide.tsx';
+import MiddleSide from '../components/MiddleSide.tsx';
+import RightSide from '../components/RightSide.tsx';
+import BottomNavBar from '../components/BottomNavbar.tsx'; // Import the BottomNavBar component
+import styles from './Homepage.module.css'; // Updated import for CSS Module
 
 const HomePage = () => {
   return (
-    <div className="App">
-      <div className="leftSide">
+    <div className={styles.App}>
+      <div className={styles.leftSide}>
         <LeftSide />
       </div>
-      <div className="middleSide">
+      <div className={styles.middleSide}>
         <MiddleSide />
       </div>
-      <div className="rightside">
+      <div className={styles.rightSide}>
         <RightSide />
       </div>
       <BottomNavBar /> {/* Add the BottomNavBar component */}

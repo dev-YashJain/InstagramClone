@@ -1,0 +1,58 @@
+/* General Styles for Layout */
+.App {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  width: 100%; /* Prevent overflow */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Light Mode Styles */
+.darkMode {
+  background-color: black;
+  color: white;
+}
+
+/* Light Mode Styles */
+.lightMode {
+  background-color: white;
+  color: black;
+}
+
+/* Responsive Design - Handle layout changes on smaller screens */
+@media (max-width: 1144px) {
+  .rightSide {
+    display: none; /* Hide right side on small screens */
+  }
+}
+
+@media (max-width: 780px) {
+  .App {
+    box-sizing: border-box; /* Prevent overflow */
+  }
+
+  .leftSide {
+    display: none; /* Hide left side on small screens */
+  }
+
+  .rightSide {
+    display: none; /* Ensure right side is hidden */
+  }
+
+  .middleSide {
+    width: 100vw; /* Full width for middle side */
+  }
+
+  .profileStart {
+    padding-left: 20px; /* Add padding for profile section */
+  }
+
+  .highlights {
+    margin-left: 0; /* Reset margin for highlights */
+  }
+}

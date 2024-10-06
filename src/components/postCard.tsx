@@ -1,5 +1,4 @@
-import React from 'react';
-import '../components/middleSide.css'; // Ensure the path is correct based on your project structure
+import {FC, useState} from 'react';
 import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 import MoreHorizOutlinedIcon from '@mui/icons-material/MoreHorizOutlined';
 import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -9,16 +8,16 @@ import ShareIcon from '@mui/icons-material/IosShareRounded';
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import '../components/postCard.css'
+import classes from '../components/PostCard.module.css'; // Updated to CSS Module
 
 interface CardProps {
     profile_url: string[];
     name: string;
 }
 
-const Card: React.FC<CardProps> = ({ profile_url, name }) => {
-    const [currentImageIndex, setCurrentImageIndex] = React.useState<number>(0);
-    const [liked, setLiked] = React.useState<boolean>(false); // State for like button
+const Card: FC<CardProps> = ({ profile_url, name }) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+    const [liked, setLiked] = useState<boolean>(false); // State for like button
 
     const handlePrevImage = () => {
         setCurrentImageIndex((prevIndex) =>
@@ -37,29 +36,29 @@ const Card: React.FC<CardProps> = ({ profile_url, name }) => {
     };
 
     return (
-        <div className="postSection">
-            <div className="post">
+        <div className={classes.postSection}> 
+            <div className={classes.post}> 
                 {/* Post Header */}
-                <div className="postHeader">
-                    <div className="profilePhoto">
+                <div className={classes.postHeader}> 
+                    <div className={classes.profilePhoto}> 
                         <img src={profile_url[0]} alt={name} />
                     </div>
-                    <div className="profileName">{name}</div>
-                    <div className="blueTick">
+                    <div className={classes.profileName}>{name}</div>
+                    <div className={classes.blueTick}> 
                         <CheckCircleOutlineOutlinedIcon style={{ color: 'blue', fontSize: '16px' }} />
                     </div>
-                    <div className="time">. 10w .</div>
-                    <div className="info">
+                    <div className={classes.time}>. 10w .</div>
+                    <div className={classes.info}> 
                         <MoreHorizOutlinedIcon style={{ fontSize: '20px' }} />
                     </div>
                 </div>
 
                 {/* Post Images and Dots */}
-                <div className="postImages">
+                <div className={classes.postImages}> 
                     {/* Left Arrow */}
                     {profile_url.length > 1 && currentImageIndex > 0 && (
                         <ArrowBackIosNewIcon
-                            className="prevArrow"
+                            className={classes.prevArrow} // Updated className
                             onClick={handlePrevImage}
                         />
                     )}
@@ -68,24 +67,24 @@ const Card: React.FC<CardProps> = ({ profile_url, name }) => {
                     <img
                         src={profile_url[currentImageIndex]}
                         alt={`Post image ${currentImageIndex + 1}`}
-                        className="postImage active"
+                        className={`${classes.postImage} ${classes.active}`} // Updated className
                     />
 
                     {/* Right Arrow */}
                     {profile_url.length > 1 && currentImageIndex < profile_url.length - 1 && (
                         <ArrowForwardIosIcon
-                            className="nextArrow"
+                            className={classes.nextArrow} // Updated className
                             onClick={handleNextImage}
                         />
                     )}
 
                     {/* Dots Indicator */}
                     {profile_url.length > 1 && (
-                        <div className="dotsContainer">
+                        <div className={classes.dotsContainer}> 
                             {profile_url.map((_, dotIndex) => (
                                 <span
                                     key={dotIndex}
-                                    className={`dot ${dotIndex === currentImageIndex ? 'activeDot' : ''}`}
+                                    className={`${classes.dot} ${dotIndex === currentImageIndex ? classes.activeDot : ''}`} // Updated className
                                 ></span>
                             ))}
                         </div>
@@ -93,34 +92,34 @@ const Card: React.FC<CardProps> = ({ profile_url, name }) => {
                 </div>
 
                 {/* Post Footer */}
-                <div className="postFooter">
-                    <div className="footerIcons">
-                        <div className="leftIcons">
+                <div className={classes.postFooter}> 
+                    <div className={classes.footerIcons}> 
+                        <div className={classes.leftIcons}> 
                             {/* Like Icon */}
                             {liked ? (
-                                <LikedIcon className='icon' style={{ color: 'red' }} onClick={toggleLike} />
+                                <LikedIcon className={classes.icon} style={{ color: 'red' }} onClick={toggleLike} />
                             ) : (
-                                <LikeIcon className='icon' onClick={toggleLike} />
+                                <LikeIcon className={classes.icon} onClick={toggleLike} />
                             )}
-                            <CommentIcon className='icon' />
-                            <ShareIcon className='icon' />
+                            <CommentIcon className={classes.icon} />
+                            <ShareIcon className={classes.icon} />
                         </div>
-                        <BookmarkIcon className='bookmark' />
+                        <BookmarkIcon className={classes.bookmark} /> 
                     </div>
                     <br />
-                    <div className="footerLikes">68,321 likes</div>
-                    <div className="footerCaption">
-                        <div className="footerProfileName">Tom Hanks</div>
-                        <div className="blueTick">
+                    <div className={classes.footerLikes}>68,321 likes</div>
+                    <div className={classes.footerCaption}> 
+                        <div className={classes.footerProfileName}>Tom Hanks</div>
+                        <div className={classes.blueTick}> 
                             <CheckCircleOutlineOutlinedIcon style={{ color: 'blue', fontSize: '16px' }} />
                         </div>
-                        <div className="captionText">Strings is all you need.</div>
+                        <div className={classes.captionText}>Strings is all you need.</div>
                     </div>
                     <br />
-                    <div className="viewComment">View all 681 comments</div>
-                    <div className="addComment">Add a comment...</div>
+                    <div className={classes.viewComment}>View all 681 comments</div>
+                    <div className={classes.addComment}>Add a comment...</div>
                 </div>
-                <hr className="postSeparator" />
+                <hr className={classes.postSeparator} /> 
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../components/story.css';
+import classes from '../components/Story.module.css'; // Update import for CSS module
 import LikeIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import LikedIcon from '@mui/icons-material/Favorite'; // Import filled heart icon for liked state
+import LikedIcon from '@mui/icons-material/Favorite';
 
 interface Story {
     profile_url: string[];
@@ -16,47 +16,49 @@ interface StoryProps {
     onClose: () => void;
 }
 
-const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) => {
+const StoryViewer: FC<StoryProps> = ({ stories, initialIndex, onClose }) => {
     const [currentStoryIndex, setCurrentStoryIndex] = useState(initialIndex);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [imageProgress, setImageProgress] = useState<number[]>(new Array(stories[initialIndex]?.stories.length).fill(0));
-    const [liked, setLiked] = useState<boolean[]>(new Array(stories.length).fill(false)); // Like state for each story
+    const [liked, setLiked] = useState<boolean[]>(new Array(stories.length).fill(false));
     const navigate = useNavigate();
 
-    const currentStory = stories[currentStoryIndex];
-    const imageCount = currentStory?.stories?.length || 0;
+    // Memoize current story and image count for performance optimization
+    const currentStory = useMemo(() => stories[currentStoryIndex], [stories, currentStoryIndex]);
+    const imageCount = useMemo(() => currentStory?.stories?.length || 0, [currentStory]);
 
+    // Navigate to the home page if there are no stories
     useEffect(() => {
         if (!currentStory || imageCount === 0) {
             navigate('/');
         }
     }, [currentStory, imageCount, navigate]);
 
-    // Set the progress of the current image
+    // Manage the image progress and change image when progress reaches 100%
     useEffect(() => {
         const interval = setInterval(() => {
             setImageProgress((prevProgress) => {
                 const updatedProgress = [...prevProgress];
                 if (updatedProgress[currentImageIndex] < 100) {
-                    updatedProgress[currentImageIndex] += (100 / 30); // Increase 3.33% every 100ms to complete in 3 seconds
+                    updatedProgress[currentImageIndex] += (100 / 30); // Increment based on time interval
                 }
                 return updatedProgress;
             });
-        }, 100); // Increase progress every 100ms
+        }, 100);
 
         if (imageProgress[currentImageIndex] >= 100) {
             handleNextImage();
         }
 
-        return () => clearInterval(interval);
+        return () => clearInterval(interval); // Clear interval to prevent memory leaks
     }, [imageProgress, currentImageIndex]);
 
-    // Reset progress when changing image
+    // Reset progress when story or image changes
     useEffect(() => {
-        setImageProgress(new Array(imageCount).fill(0)); // Reset progress for new story
+        setImageProgress(new Array(imageCount).fill(0));
     }, [currentImageIndex, currentStoryIndex, imageCount]);
 
-    // Move to the next image or story
+    // Handle advancing to the next image
     const handleNextImage = () => {
         if (currentImageIndex < imageCount - 1) {
             setCurrentImageIndex((prevIndex) => prevIndex + 1);
@@ -65,7 +67,7 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
         }
     };
 
-    // Move to the previous image or story
+    // Handle returning to the previous image
     const handlePrevImage = () => {
         if (currentImageIndex > 0) {
             setCurrentImageIndex((prevIndex) => prevIndex - 1);
@@ -76,43 +78,43 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
         }
     };
 
-    // Move to the next story
+    // Handle moving to the next story
     const handleNextStory = () => {
         if (currentStoryIndex < stories.length - 1) {
             setCurrentStoryIndex((prevIndex) => prevIndex + 1);
             setCurrentImageIndex(0);
         } else {
-            onClose(); // Close viewer if it's the last story
+            onClose(); // Close when all stories are viewed
         }
     };
 
-    // Handle click on screen (left or right half)
+    // Handle screen clicks for navigation
     const handleScreenClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const screenWidth = window.innerWidth;
         const clickPosition = e.clientX;
 
         if (clickPosition < screenWidth / 2) {
-            handlePrevImage(); // Left half, go to the previous image
+            handlePrevImage();
         } else {
-            handleNextImage(); // Right half, go to the next image
+            handleNextImage();
         }
     };
 
-    // Close the story viewer
+    // Handle closing the story viewer
     const handleClose = () => {
         onClose();
     };
 
-    // Do nothing if profile image clicked
+    // Prevent profile image click from triggering navigation
     const handleProfileImageClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        e.stopPropagation(); // Prevent further action
+        e.stopPropagation();
     };
 
-    // Toggle like functionality for the current story
+    // Handle like toggling for stories
     const handleLikeToggle = () => {
         setLiked((prevLikes) => {
             const updatedLikes = [...prevLikes];
-            updatedLikes[currentStoryIndex] = !updatedLikes[currentStoryIndex]; // Toggle like state for current story
+            updatedLikes[currentStoryIndex] = !updatedLikes[currentStoryIndex];
             return updatedLikes;
         });
     };
@@ -122,13 +124,13 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
     }
 
     return (
-        <div className="storyModal" onClick={handleScreenClick}>
+        <div className={classes.storyModal} onClick={handleScreenClick}>
             {/* Progress Bars */}
-            <div className="progressBars">
+            <div className={classes.progressBars}>
                 {currentStory.stories.map((_, index) => (
-                    <div key={index} className="progressContainer">
+                    <div key={index} className={classes.progressContainer}>
                         <div
-                            className={`progressSegment ${index <= currentImageIndex ? 'completed' : ''}`}
+                            className={`${classes.progressSegment} ${index <= currentImageIndex ? classes.completed : ''}`}
                             style={{
                                 width: index === currentImageIndex
                                     ? `${imageProgress[currentImageIndex]}%`
@@ -141,36 +143,35 @@ const StoryViewer: React.FC<StoryProps> = ({ stories, initialIndex, onClose }) =
             </div>
 
             {/* Profile Section */}
-            <div className="storyHeader">
+            <div className={classes.storyHeader}>
                 <img
                     src={currentStory.profile_url[0]}
                     alt={`${currentStory.name} profile`}
-                    className="profileImage"
-                    onClick={handleProfileImageClick} // Do nothing when clicked
+                    className={classes.profileImage}
+                    onClick={handleProfileImageClick}
                 />
-                <span className="storyHeaderName">{currentStory.name}</span>
+                <span className={classes.storyHeaderName}>{currentStory.name}</span>
             </div>
 
             {/* Story Image */}
             <img
                 src={currentStory.stories[currentImageIndex]}
                 alt={currentStory.name}
-                className="storyImage"
+                className={classes.storyImage}
             />
 
             {/* Close Button */}
-            <div className="closeButton" onClick={handleClose}>X</div>
+            <div className={classes.closeButton} onClick={handleClose}>X</div>
 
             {/* Like and Reply Section */}
-            <div className="storyBottom">
-                <div className="bottomDiv">Reply to..</div>
+            <div className={classes.storyBottom}>
+                <div className={classes.bottomDiv}>Reply to..</div>
 
-                {/* Like Button with toggle functionality */}
-                <div className="likeButton" onClick={handleLikeToggle}>
+                <div className={classes.likeButton} onClick={handleLikeToggle}>
                     {liked[currentStoryIndex] ? (
-                        <LikedIcon className="storyLikedIcon liked" /> // Filled heart icon if liked
+                        <LikedIcon className={`${classes.storyLikedIcon} ${classes.liked}`} />
                     ) : (
-                        <LikeIcon className="storyLikeIcon" /> // Outline heart icon if not liked
+                        <LikeIcon className={classes.storyLikeIcon} />
                     )}
                 </div>
             </div>

@@ -1,5 +1,4 @@
-// src/contexts/DarkModeContext.tsx
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import { FC, createContext, useState, useEffect, ReactNode } from 'react';
 
 // Define the shape of the context
 interface DarkModeContextProps {
@@ -10,11 +9,11 @@ interface DarkModeContextProps {
 // Create the context with default values
 export const DarkModeContext = createContext<DarkModeContextProps>({
   darkMode: false,
-  toggleDarkMode: () => {},
+  toggleDarkMode: () => { },
 });
 
 // Create a provider component
-export const DarkModeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const DarkModeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     const savedMode = localStorage.getItem('darkMode');
     return savedMode === 'true';

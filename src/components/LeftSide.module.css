@@ -3,9 +3,11 @@
   width: 100px;
   height: 40px;
 }
+
 .logoPart {
   margin-left: 15px;
 }
+
 .navBar {
   margin-top: 15px;
   margin-left: 3px;
@@ -13,24 +15,7 @@
   flex-direction: column;
   position: relative; /* Ensure relative positioning for absolute dropdown */
 }
-.navItem {
-  font-size: 17px;
-  display: flex;
-  padding: 14px;
-  align-items: center;
-  cursor: pointer;
-  position: relative; /* Needed for the dropdown to be correctly positioned */
-}
-.navItem:hover{
-  background-color: gainsboro;
-  border-radius: 4px;
-  width: 200px;
-}
-body.dark-mode .navItem:hover {
-  background-color: #333;
-  border-radius: 4px;
-  width: 200px;
-}
+
 .leftSidePart {
   padding-top: 25px;
   position: fixed;
@@ -47,7 +32,7 @@ body.dark-mode .navItem:hover {
   top: 380px; /* Align with the "More" button */
   left: 110%; /* Position to the right of the "More" button */
   z-index: 10; /* Higher z-index to appear above other elements */
-  background-color: white;
+/* Default background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 8px 0;
@@ -64,9 +49,7 @@ body.dark-mode .navItem:hover {
   align-items: center;
 }
 
-.dropdownItem:hover {
-  background-color: #f0f0f0; /* Light gray background on hover */
-}
+
 
 /* Dark Mode Styling */
 body.dark-mode {
@@ -74,16 +57,14 @@ body.dark-mode {
   color: #ffffff;
 }
 
-body.dark-mode .dropdown {
-  background-color: #2a2a2a;
-  color: #ffffff;
+
+
+body.dark-mode .dropdownItem {
+  color: #ffffff; /* Ensure dropdown item text is white */
 }
 
-body.dark-mode .dropdownItem:hover {
-  background-color: #3a3a3a;
-}
 
 .navLink {
   text-decoration: none;
-  color: inherit;
+  color: inherit; /* Inherit color based on dark/light mode */
 }

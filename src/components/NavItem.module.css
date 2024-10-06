@@ -1,0 +1,18 @@
+.navItem {
+  font-size: 17px;
+  display: flex;
+  padding: 14px;
+  align-items: center;
+  cursor: pointer;
+  position: relative; /* Needed for the dropdown to be correctly positioned */
+}
+.navItem:hover {
+  background-color: gainsboro !important;
+  border-radius: 4px;
+  width: 200px;
+  color: black;
+}
+
+.itemText{
+  margin-left: 20px;
+}

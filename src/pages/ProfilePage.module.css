@@ -1,9 +1,8 @@
+/* src/pages/Profilepage.module.css */
 .profileSection {
-  margin: 0;
-  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-
+  box-sizing: border-box;
+  width: 100vw;
 }
 
 html,
@@ -14,56 +13,55 @@ body {
 }
 
 .left {
-  flex: 0.25;
-  border-right:1px solid #333;
+  flex: 0.2;
 }
 
 .userProfile {
-  flex: 0.75;
-  /* border-left: 1px solid lightgray; */
+  flex: 0.8;
   padding: 20px;
-  margin-left: 1rem;
+  border: 1px solid gray;
 }
 
 .profileStart {
-  padding-top:30px;
+  padding-top: 30px;
   display: flex;
-  align-items: center;
   padding-left: 100px;
+  align-items: center;
   height: 40vh;
-  /* border: 1px solid; */
 }
+
 .bandImage img {
   border-radius: 50%;
   height: 25vh;
   width: 25vh;
 }
+
 .profileHeader {
   display: flex;
   align-items: center;
 }
+
 .profileHeaderRight {
   padding-left: 80px;
   line-height: 0.7;
 }
+
 .profileStats span {
   margin-right: 20px;
 }
+
 .profileHeader button {
-  margin-right: 10px;
-  margin-left: 10px;
+  margin: 0 10px;
   border-radius: 6px;
   padding: 6px;
   background-color: lightgrey;
   color: black;
+  border: none; /* Remove default border */
 }
-body.dark-mode .profileHeader button{
+
+body.dark-mode .profileHeader button {
   background-color: #4a4a4a;
   color: white;
-}
-.profileHeader button {
-  border: none;
-  border-radius: 4px;
 }
 
 .highlights {
@@ -71,13 +69,15 @@ body.dark-mode .profileHeader button{
   margin-left: 4rem;
   border-bottom: 1px solid #333;
 }
+
 .highlight {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 2rem;
+  padding: 2rem;
   justify-content: center;
 }
+
 .highlight img {
   height: 12vh;
   width: 12vh;
@@ -85,17 +85,6 @@ body.dark-mode .profileHeader button{
 }
 
 /* Existing CSS for other components */
-.profileSection {
-  display: flex;
-}
-
-.userProfile {
-  flex: 1;
-  
-  padding: 20px;
-  margin-left: 220px;
-}
-
 .postsSection {
   flex-direction: column;
 }
@@ -106,6 +95,7 @@ body.dark-mode .profileHeader button{
   padding: 10px 0;
   margin-bottom: 20px;
 }
+
 .navigator div {
   display: flex;
   align-items: center;
@@ -120,7 +110,6 @@ body.dark-mode .profileHeader button{
   grid-template-columns: repeat(3, 1fr); /* 3 columns */
   gap: 5px; /* Gap between images */
   padding: 10px 30px; /* Padding around the grid */
-
 }
 
 /* Styling for each post image */
@@ -131,17 +120,20 @@ body.dark-mode .profileHeader button{
   border-radius: 4px; /* Optional: Rounded corners */
 }
 
-
 @media (max-width: 780px) {
-  
   .profileSection,
   .userProfile {
     margin: 0;
+    border-right: none;
     padding: 0;
+    justify-content: center;
+    border:none;
   }
+
   .left {
     display: none;
   }
+
   .topNav {
     padding: 15px;
     display: flex;
@@ -149,25 +141,30 @@ body.dark-mode .profileHeader button{
     justify-content: space-between;
     border-bottom: 1px solid gray;
   }
+
   .div2 {
     padding-top: 25px;
     display: flex;
-    align-items:normal;
+    align-items: normal;
     margin-left: 100px;
   }
+  
   .div2 p {
     margin-left: 20px;
     font-size: 25px;
     padding-bottom: 15px;
     padding-right: 8px;
   }
+
   .div3 {
     margin-left: 120px;
     display: flex;
   }
+
   .div3 .btn2 {
     margin-left: 5px;
   }
+
   .div3 button {
     border-radius: 8px;
     padding: 6px;
@@ -175,17 +172,21 @@ body.dark-mode .profileHeader button{
     background-color: lightgrey;
     border: none;
   }
-  body.dark-mode .div3 button{
+
+  body.dark-mode .div3 button {
     background-color: #4a4a4a;
   }
+
   .div4 {
     display: flex;
     align-items: center;
   }
+
   .div6 {
     padding: 10px;
     margin-left: 10px;
   }
+
   .div5 img {
     margin: 10px;
     height: 80px;
@@ -201,15 +202,19 @@ body.dark-mode .profileHeader button{
     width: 245px;
     border-radius: 8px;
   }
-  body.dark-mode .div6 button{
+
+  body.dark-mode .div6 button {
     background-color: #4a4a4a;
   }
+
   .div7 {
     margin: 20px;
   }
+
   .div8 {
     margin-top: 20px;
   }
+
   .highlights {
     display: flex;
     align-items: baseline;
@@ -217,19 +222,23 @@ body.dark-mode .profileHeader button{
     border-bottom: none;
     padding: 0;
   }
+
   .highlight {
     margin: 0;
     padding: 3px;
   }
+
   .highlight img {
     height: 50px;
     width: 50px;
     border-radius: 50%;
     border: 1px solid purple;
   }
+
   .highlight p {
     font-size: 12px;
   }
+
   .div9 {
     display: flex;
     justify-content: space-between;
@@ -238,30 +247,26 @@ body.dark-mode .profileHeader button{
     align-items: center; /* Aligns items vertically */
     text-align: center;
     border-bottom: 1px solid #333; /* Optional styling */
-}
+  }
 
-.post, .foll, .follow {
+  .post,
+  .foll,
+  .follow {
     flex: 1; /* Ensures equal width */
     padding: 10px 0; /* Consistent padding */
-}
+  }
 
-.postText, .follText, .followText {
+  .postText,
+  .follText,
+  .followText {
     font-size: 12px;
     text-transform: uppercase;
     color: gray; /* Lighter text for the labels */
-    margin: 0; /* Remove extra margins */
-}
-
-.post p, .foll p, .follow p {
-    margin: 0; /* Remove any default margin on the <p> tags */
-    line-height: 1.4; /* Adjusts the line height for better spacing */
-}
-
-  .navigator {
-    margin-left: 25px;
+    margin: 0; /* Reset margin for consistency */
   }
-  .postsGrid {
-    padding: 0;
-    margin-bottom: 50px;
+  .postImg {
+    width: 30%;
+    padding: 6px;
+    border-radius: 10px;
   }
 }

@@ -86,7 +86,7 @@
 .storyBottom {
   position: absolute;
   bottom: 20px; /* Adjusts the distance from the bottom of the story */
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,8 +114,7 @@
   color: #ffffff;
   font-size: 30px;
 }
-.storyLikedIcon
-{
+.storyLikedIcon {
   color: red;
 }
 /* Mobile View Adjustments */

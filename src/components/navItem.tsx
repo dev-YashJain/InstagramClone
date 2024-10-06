@@ -1,17 +1,17 @@
-// NavItem.tsx
-import React from 'react';
+import {FC, ReactNode} from 'react';
+import styles from './NavItem.module.css';  // Import the CSS module
 
 interface NavItemProps {
-  icon: React.ReactNode;  // The icon component to display
+  icon: ReactNode;  // The icon component to display
   text: string;           // The text label for the nav item
   onClick?: () => void;   // Optional click handler
 }
 
-const NavItem: React.FC<NavItemProps> = ({ icon, text, onClick }) => {
+const NavItem:FC<NavItemProps> = ({ icon, text, onClick }) => {
   return (
-    <div className="navItem" onClick={onClick}>
+    <div className={styles.navItem} onClick={onClick}> {/* Use class from CSS module */}
       {icon}
-      <div className="itemText">{text}</div>
+      <div className={styles.itemText}>{text}</div>    {/* Use class from CSS module */}
     </div>
   );
 };

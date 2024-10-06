@@ -2,7 +2,7 @@ import LeftSide from '../components/LeftSide.tsx';
 import MiddleSide from '../components/MiddleSide.tsx';
 import RightSide from '../components/RightSide.tsx';
 import BottomNavBar from '../components/BottomNavbar.tsx'; // Import the BottomNavBar component
-import styles from './Homepage.module.css'; // Updated import for CSS Module
+import styles from './HomePage.module.css'; // Updated import for CSS Module
 
 const HomePage = () => {
   return (

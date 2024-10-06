@@ -1,5 +1,5 @@
 import { FC, useEffect, useState, useContext, useRef } from 'react';
-import classes from './Profilepage.module.css'; // Import the CSS Module
+import classes from './ProfilePage.module.css'; // Import the CSS Module
 import LeftSide from '../components/LeftSide';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AddIcon from '@mui/icons-material/Add';

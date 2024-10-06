@@ -5,7 +5,7 @@ import whiteLogo from '../assets/whiteLogo.png';
 import instagramLogo from '../assets/Instagram_logo.svg.png';
 import NotificationIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import StoryViewer from './Story';
-import Card from './Postcard';
+import Card from './PostCard';
 
 
 const LOCAL_STORAGE_KEY = 'darkMode'; // Avoid hardcoding the local storage key

@@ -1,7 +1,7 @@
-import LeftSide from '../components/LeftSide';
-import MiddleSide from '../components/MiddleSide';
-import RightSide from '../components/RightSide';
-import BottomNavBar from '../components/BottomNavbar'; // Import the BottomNavBar component
+import LeftSide from '../components/LeftSide.js';
+import MiddleSide from '../components/MiddleSide.js';
+import RightSide from '../components/RightSide.js';
+import BottomNavBar from '../components/BottomNavbar.js'; // Import the BottomNavBar component
 import styles from './HomePage.module.css'; // Updated import for CSS Module
 
 const HomePage = () => {

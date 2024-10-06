@@ -1,21 +1,30 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "jsx": "react-jsx",
-    "strict": true,
-    "moduleResolution": "node",
-    "baseUrl": "./src",
+    "target": "esnext",                                // Target the latest JavaScript version
+    "module": "esnext",                                // Use ES modules
+    "lib": ["dom", "dom.iterable", "esnext"],          // Use DOM and ESNext features
+    "allowJs": true,                                   // Allow JavaScript files if needed
+    "skipLibCheck": true,                              // Skip type checking for declaration files
+    "esModuleInterop": true,                           // CommonJS and ES module interop
+    "resolveJsonModule": true,                         // Enable JSON imports
+    "isolatedModules": true,                           // Treat every file as an isolated module
+    "jsx": "react-jsx",                                // React JSX runtime
+    "moduleResolution": "node",                        // Resolve modules using Node.js
+    "noEmit": true,                                    // Do not emit compiled files
+    "forceConsistentCasingInFileNames": true,          // Enforce consistent casing in imports
+    "strict": true,                                    // Enable strict type-checking
+    "strictNullChecks": true,                          // Null values must be handled explicitly
+    "noImplicitAny": true,                             // Prevent implicit any types
+    "baseUrl": "./",                                   // Base URL for module resolution
     "paths": {
-      "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"],
-      "@context/*": ["context/*"],
-      "@pages/*": ["pages/*"]
+      "@components/*": ["src/components/*"],           // Path alias for components
+      "@pages/*": ["src/pages/*"],                     // Path alias for pages
+      "@context/*": ["src/context/*"]                  // Path alias for context
     },
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "typeRoots": ["node_modules/@types", "src/types"], // Include type definitions
+    "allowSyntheticDefaultImports": true,              // Allow default imports for non-ES modules
+    "noFallthroughCasesInSwitch": true                 // Prevent case fallthrough in switch statements
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"],                                  // Include all TypeScript files in src directory
+  "exclude": ["node_modules", "dist"]                  // Exclude node_modules and dist (output) folder
 }
